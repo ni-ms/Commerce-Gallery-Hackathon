@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "records": [
+    {
+      "id": "dest-warehouse",
+      "merchant_id": "merchant-demo-01",
+      "name": "Sample merchant warehouse",
+      "type": "warehouse",
+      "zone_id": "zone-warehouse",
+      "acceptance_status": "merchant_approved",
+      "accepted_conditions": [
+        "sealed",
+        "opened",
+        "damaged",
+        "unknown"
+      ],
+      "handling_fee_cents": 300,
+      "evidence_origin": "synthetic_merchant_policy"
+    },
+    {
+      "id": "dest-inspection",
+      "merchant_id": "merchant-demo-01",
+      "name": "Sample inspection center",
+      "type": "inspection",
+      "zone_id": "zone-shadyside",
+      "acceptance_status": "merchant_approved",
+      "accepted_conditions": [
+        "opened",
+        "damaged",
+        "unknown"
+      ],
+      "handling_fee_cents": 400,
+      "evidence_origin": "synthetic_merchant_policy"
+    }
+  ]
+}

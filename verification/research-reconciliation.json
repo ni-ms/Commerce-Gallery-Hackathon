@@ -1,0 +1,1360 @@
+{
+  "checked_at": "2026-10-03T23:08:43.956693+00:00",
+  "case_id": "RET-115451f05dd0",
+  "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+  "original_request": {
+    "request_key": "band-init-RET-115451f05dd0-1-research",
+    "provider": "band",
+    "status": "pending",
+    "data": {
+      "case_id": "RET-115451f05dd0",
+      "version": 1
+    },
+    "created_at": "2026-10-03 22:30:00.540869+00:00"
+  },
+  "protected_before": {
+    "return_cases": "19b3abacc42ad1d625e4fff39e564943aba4c7d296afa6368c33c466c48c44f1",
+    "shipments": "d75c55949125c900a0c2face3adb3e1d48ab071c5d777b705e0dee1d774e643a",
+    "route_proposals": "fbbac8abde13402885c00b52db52517cb0aa2656c8a73df8a8778fdb3b03c308"
+  },
+  "roles": {
+    "returns": {
+      "context": {
+        "pages": 1,
+        "complete": true,
+        "messages": [
+          {
+            "attachments": [],
+            "content": "@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] {\"event\": \"plan\", \"case_id\": \"RET-115451f05dd0\", \"version\": 1, \"request_key\": \"band-init-RET-115451f05dd0-1-plan\", \"request\": \"Review current facts. Coordinate with your colleagues through addressed Band tools.\"}",
+            "id": "01e6ba2a-6a03-49c2-b964-dbeb14b4d176",
+            "inserted_at": "2026-10-03T22:46:11.099830Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:46:11.568564Z",
+                      "error": "Band message must carry the trusted case version.",
+                      "started_at": "2026-10-03T22:46:11.244454Z",
+                      "status": "failed"
+                    },
+                    {
+                      "attempt_number": 2,
+                      "completed_at": "2026-10-03T22:48:11.886808Z",
+                      "error": "Band message must carry the trusted case version.",
+                      "started_at": "2026-10-03T22:48:11.270866Z",
+                      "status": "failed"
+                    },
+                    {
+                      "attempt_number": 3,
+                      "completed_at": "2026-10-03T22:49:11.676724Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:48:58.502202Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 3,
+                  "delivered_at": "2026-10-03T22:46:11.244454Z",
+                  "processed_at": "2026-10-03T22:49:11.676724Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:49:11.679618Z"
+          },
+          {
+            "attachments": [],
+            "content": "Internal error while processing message; see agent logs.",
+            "id": "fe0f4ca0-580b-4cc1-9188-c3065e976c51",
+            "inserted_at": "2026-10-03T22:46:11.677684Z",
+            "message_type": "error",
+            "metadata": {
+              "failure": {
+                "code": null,
+                "detail": null,
+                "message": "Internal error while processing message; see agent logs.",
+                "provider": "band-runtime"
+              }
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:46:11.677684Z"
+          },
+          {
+            "attachments": [],
+            "content": "Internal error while processing message; see agent logs.",
+            "id": "6d5af2da-7b60-4493-b39d-63f9b697670f",
+            "inserted_at": "2026-10-03T22:48:12.008086Z",
+            "message_type": "error",
+            "metadata": {
+              "failure": {
+                "code": null,
+                "detail": null,
+                "message": "Internal error while processing message; see agent logs.",
+                "provider": "band-runtime"
+              }
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:48:12.008086Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[9537c5b0-e3c4-4cda-8bf2-4023bcec1251]] Please check return eligibility for case RET-115451f05dd0. Here are the current facts:\\n- SKU: LAMP-01\\n- Merchant: merchant-demo-01\\n- Reason: Not needed\\n- Reported condition: sealed\\n- Elapsed since purchase: 10 days\\n- Origin zone: zone-oakland\\n\\nPlease search merchant policy, assess eligibility given the item condition, identify any restrictions or required inspections, and report your findings back here.\"}",
+            "id": "51c8401c-ef39-4908-860c-31ca8aa74aff",
+            "inserted_at": "2026-10-03T22:49:08.213236Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "9537c5b0-e3c4-4cda-8bf2-4023bcec1251": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:49:54.802924Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:08.764486Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:08.764486Z",
+                  "processed_at": "2026-10-03T22:49:54.802924Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/9537c5b0-e3c4-4cda-8bf2-4023bcec1251?g=botz-r3-vivid1&s=48&c=00D7E3&l=0.8",
+                  "handle": "nmsharma/policy",
+                  "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+                  "kind": "mention",
+                  "name": "Policy",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:49:54.807741Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] @[[2847b062-adf1-4185-9726-102330ebd3bd]] **Policy finding for RET-115451f05dd0**\\n\\n**Eligibility: \\u2705 Eligible for return**\\n\\nHere are my findings based on retrieved policy passages:\\n\\n**Return Window (POL-001)**\\nThe merchant accepts returns within 30 days. At 10 days since purchase, this return is within the eligible window.\\n\\n**Condition: Sealed (POL-002)**\\nThe reported condition is **sealed** and no inspection condition contradicts this (inspection_condition is null). Per POL-002, a sealed item may be forwarded directly to a waiting buyer provided:\\n- SKU matches the waiting buyer's order\\n- Arrival meets the buyer's deadline\\n- Merchant approves the current plan\\n\\n**No inspection required** at this stage \\u2014 the item is reported sealed with no contradictory evidence. No restrictions under POL-003 (opened) or POL-004 (damaged) apply.\\n\\n**Summary for Fulfillment:**\\nDirect forwarding to a waiting buyer is policy-eligible for LAMP-01 from zone-oakland, subject to SKU match, deadline feasibility, and merchant approval. No inspection block applies.\\n\\nPolicy version: `demo-policy-v1` | Passages used: POL-001, POL-002\"}",
+            "id": "821204b1-1943-44a6-816c-5a5eab5c6d96",
+            "inserted_at": "2026-10-03T22:49:50.418359Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:21.772916Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:50.920700Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:50.920700Z",
+                  "processed_at": "2026-10-03T22:50:21.772916Z",
+                  "status": "processed"
+                },
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:03.832320Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:50.619527Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:50.619527Z",
+                  "processed_at": "2026-10-03T22:50:03.832320Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                },
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+            "sender_name": "Policy",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:21.777760Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] Policy has cleared RET-115451f05dd0 for direct forwarding. Please evaluate routing options and report back.\\n\\n**Case facts:**\\n- SKU: LAMP-01\\n- Merchant: merchant-demo-01\\n- Origin zone: zone-oakland\\n- Reported condition: sealed\\n- Reason: Not needed\\n- Elapsed since purchase: 10 days\\n\\n**Policy finding summary:**\\n- \\u2705 Eligible \\u2014 within 30-day return window (10 days elapsed)\\n- Sealed condition confirmed, no inspection required\\n- Direct forwarding to a waiting buyer is policy-eligible, subject to: SKU match, deadline feasibility, and merchant approval\\n- Policy version: demo-policy-v1 | Passages: POL-001, POL-002\\n\\nPlease compare forwarding, warehouse, and inspection route options, check for waiting buyers matching LAMP-01, reserve demand if eligible, and report the recommended destination and costs.\"}",
+            "id": "c6a38808-ca0c-44df-8e9a-94a07efb4dbf",
+            "inserted_at": "2026-10-03T22:49:59.910061Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:34.552362Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:21.895112Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:21.895112Z",
+                  "processed_at": "2026-10-03T22:50:34.552362Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:34.569028Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] **Fulfillment routing for RET-115451f05dd0**\\n\\n**Item:** LAMP-01 | Origin: zone-oakland | Condition: Sealed\\n\\n---\\n\\n**Route Evaluation Summary**\\n\\n| Destination | Type | Eligible | Cost | Transit |\\n|---|---|---|---|---|\\n| Sample merchant warehouse | Warehouse | \\u2705 | $15.00 | 48h |\\n| Sample Buyer A (BUY-001) | Buyer | \\u274c Already fulfilled | $6.00 | 24h |\\n| Sample inspection center | Inspection | \\u274c Not for sealed items | $11.00 | 24h |\\n\\n**Waiting buyers:** None found.\\n\\n---\\n\\n**Selected Route: Sample merchant warehouse**\\n- Shipping: $12.00 | Handling: $3.00 | **Total: $15.00**\\n- Estimated transit: 48 hours\\n- No buyer reservation made \\u2014 no eligible waiting buyer exists.\\n\\nDirect forwarding is policy-eligible per POL-002, but no waiting buyer is available to fulfil it. The lowest-cost eligible known route is **warehouse return** at **$15.00 total**.\\n\\n\\u26a0\\ufe0f **Merchant review required** before approving shipment. No shipment has been approved.\"}",
+            "id": "a8132f8a-2106-4088-be1a-a2fa3e006002",
+            "inserted_at": "2026-10-03T22:50:16.185805Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:52.217588Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:16.385799Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:16.385799Z",
+                  "processed_at": "2026-10-03T22:50:52.217588Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:52.221796Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] **Fulfillment routing for RET-115451f05dd0 (re-addressed)**\\n\\nThis evaluation was already completed and sent. Results are unchanged:\\n\\n**Item:** LAMP-01 | Origin: zone-oakland | Condition: Sealed\\n\\n---\\n\\n**Route Evaluation**\\n\\n| Destination | Type | Eligible | Cost | Transit |\\n|---|---|---|---|---|\\n| Sample merchant warehouse | Warehouse | \\u2705 | $15.00 | 48h |\\n| Sample Buyer A (BUY-001) | Buyer | \\u274c Already fulfilled | \\u2014 | \\u2014 |\\n| Sample inspection center | Inspection | \\u274c Not for sealed items | \\u2014 | \\u2014 |\\n\\n**Waiting buyers (find_waiting_orders):** None found.\\n\\n---\\n\\n**Recommended Route: Sample merchant warehouse**\\n- Shipping: $12.00 | Handling: $3.00 | **Total: $15.00** | Transit: 48h\\n- No buyer reservation \\u2014 no eligible waiting buyer exists.\\n\\n\\u26a0\\ufe0f Merchant approval required before shipment. No shipment has been approved.\"}",
+            "id": "74232e16-7e53-42b4-8b94-ed405922b3d2",
+            "inserted_at": "2026-10-03T22:50:31.865699Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:21.998323Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:52.318926Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:52.318926Z",
+                  "processed_at": "2026-10-03T22:52:21.998323Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:22.001981Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] I need the exact destination_id to use when creating the proposal for RET-115451f05dd0. The system requires a specific destination identifier. For the recommended \\\"Sample merchant warehouse\\\" route, what is the exact destination_id I should pass to create_proposal?\"}",
+            "id": "c4f07e4f-37b2-4830-a97d-0b82e4a1103e",
+            "inserted_at": "2026-10-03T22:50:49.377287Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:59.285529Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:49.557531Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:49.557531Z",
+                  "processed_at": "2026-10-03T22:50:59.285529Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:59.290250Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] The exact `destination_id` for the recommended route from `compare_routes` is:\\n\\n**`dest-warehouse`**\\n\\nThis corresponds to \\\"Sample merchant warehouse\\\" \\u2014 the only eligible route for RET-115451f05dd0.\"}",
+            "id": "e08ccf12-52c8-4027-8934-2ed8f3b87752",
+            "inserted_at": "2026-10-03T22:50:55.174207Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:30.539546Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:22.122124Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:22.122124Z",
+                  "processed_at": "2026-10-03T22:52:30.539546Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:30.541571Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] @[[9537c5b0-e3c4-4cda-8bf2-4023bcec1251]] **Returns update for RET-115451f05dd0 \\u2014 Merchant Review Required**\\n\\nBoth findings have been collected and documented. However, `create_proposal` is returning \\\"Destination is not eligible\\\" for all warehouse destination IDs attempted. Since no proposal can be automatically saved at this time, and Fulfillment has flagged that merchant approval is required before any shipment, I am stopping here per workflow rules.\\n\\n**Summary for merchant review:**\\n- \\u2705 Policy: Eligible (within 30-day window, sealed condition, no inspection needed)\\n- \\u2705 Fulfillment: Recommended route \\u2014 warehouse return at $15.00 total (shipping $12.00 + handling $3.00, 48h transit)\\n- \\u274c No waiting buyers found; direct forwarding not available\\n- \\u26a0\\ufe0f Merchant approval required before shipment proceeds\"}",
+            "id": "b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+            "inserted_at": "2026-10-03T22:52:14.668779Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:18.539941Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:14.849902Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:14.849902Z",
+                  "processed_at": "2026-10-03T22:52:18.539941Z",
+                  "status": "processed"
+                },
+                "9537c5b0-e3c4-4cda-8bf2-4023bcec1251": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:26.659514Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:14.855938Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:14.855938Z",
+                  "processed_at": "2026-10-03T22:52:26.659514Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                },
+                {
+                  "avatar_url": "https://api.band.ai/avatars/9537c5b0-e3c4-4cda-8bf2-4023bcec1251?g=botz-r3-vivid1&s=48&c=00D7E3&l=0.8",
+                  "handle": "nmsharma/policy",
+                  "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+                  "kind": "mention",
+                  "name": "Policy",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:26.665459Z"
+          }
+        ]
+      },
+      "messages": {
+        "pages": 1,
+        "complete": true,
+        "messages": []
+      }
+    },
+    "policy": {
+      "context": {
+        "pages": 1,
+        "complete": true,
+        "messages": [
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[9537c5b0-e3c4-4cda-8bf2-4023bcec1251]] Please check return eligibility for case RET-115451f05dd0. Here are the current facts:\\n- SKU: LAMP-01\\n- Merchant: merchant-demo-01\\n- Reason: Not needed\\n- Reported condition: sealed\\n- Elapsed since purchase: 10 days\\n- Origin zone: zone-oakland\\n\\nPlease search merchant policy, assess eligibility given the item condition, identify any restrictions or required inspections, and report your findings back here.\"}",
+            "id": "51c8401c-ef39-4908-860c-31ca8aa74aff",
+            "inserted_at": "2026-10-03T22:49:08.213236Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "9537c5b0-e3c4-4cda-8bf2-4023bcec1251": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:49:54.802924Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:08.764486Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:08.764486Z",
+                  "processed_at": "2026-10-03T22:49:54.802924Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/9537c5b0-e3c4-4cda-8bf2-4023bcec1251?g=botz-r3-vivid1&s=48&c=00D7E3&l=0.8",
+                  "handle": "nmsharma/policy",
+                  "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+                  "kind": "mention",
+                  "name": "Policy",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:49:54.807741Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] @[[2847b062-adf1-4185-9726-102330ebd3bd]] **Policy finding for RET-115451f05dd0**\\n\\n**Eligibility: \\u2705 Eligible for return**\\n\\nHere are my findings based on retrieved policy passages:\\n\\n**Return Window (POL-001)**\\nThe merchant accepts returns within 30 days. At 10 days since purchase, this return is within the eligible window.\\n\\n**Condition: Sealed (POL-002)**\\nThe reported condition is **sealed** and no inspection condition contradicts this (inspection_condition is null). Per POL-002, a sealed item may be forwarded directly to a waiting buyer provided:\\n- SKU matches the waiting buyer's order\\n- Arrival meets the buyer's deadline\\n- Merchant approves the current plan\\n\\n**No inspection required** at this stage \\u2014 the item is reported sealed with no contradictory evidence. No restrictions under POL-003 (opened) or POL-004 (damaged) apply.\\n\\n**Summary for Fulfillment:**\\nDirect forwarding to a waiting buyer is policy-eligible for LAMP-01 from zone-oakland, subject to SKU match, deadline feasibility, and merchant approval. No inspection block applies.\\n\\nPolicy version: `demo-policy-v1` | Passages used: POL-001, POL-002\"}",
+            "id": "821204b1-1943-44a6-816c-5a5eab5c6d96",
+            "inserted_at": "2026-10-03T22:49:50.418359Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:21.772916Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:50.920700Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:50.920700Z",
+                  "processed_at": "2026-10-03T22:50:21.772916Z",
+                  "status": "processed"
+                },
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:03.832320Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:50.619527Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:50.619527Z",
+                  "processed_at": "2026-10-03T22:50:03.832320Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                },
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+            "sender_name": "Policy",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:21.777760Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] @[[9537c5b0-e3c4-4cda-8bf2-4023bcec1251]] **Returns update for RET-115451f05dd0 \\u2014 Merchant Review Required**\\n\\nBoth findings have been collected and documented. However, `create_proposal` is returning \\\"Destination is not eligible\\\" for all warehouse destination IDs attempted. Since no proposal can be automatically saved at this time, and Fulfillment has flagged that merchant approval is required before any shipment, I am stopping here per workflow rules.\\n\\n**Summary for merchant review:**\\n- \\u2705 Policy: Eligible (within 30-day window, sealed condition, no inspection needed)\\n- \\u2705 Fulfillment: Recommended route \\u2014 warehouse return at $15.00 total (shipping $12.00 + handling $3.00, 48h transit)\\n- \\u274c No waiting buyers found; direct forwarding not available\\n- \\u26a0\\ufe0f Merchant approval required before shipment proceeds\"}",
+            "id": "b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+            "inserted_at": "2026-10-03T22:52:14.668779Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:18.539941Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:14.849902Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:14.849902Z",
+                  "processed_at": "2026-10-03T22:52:18.539941Z",
+                  "status": "processed"
+                },
+                "9537c5b0-e3c4-4cda-8bf2-4023bcec1251": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:26.659514Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:14.855938Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:14.855938Z",
+                  "processed_at": "2026-10-03T22:52:26.659514Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                },
+                {
+                  "avatar_url": "https://api.band.ai/avatars/9537c5b0-e3c4-4cda-8bf2-4023bcec1251?g=botz-r3-vivid1&s=48&c=00D7E3&l=0.8",
+                  "handle": "nmsharma/policy",
+                  "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+                  "kind": "mention",
+                  "name": "Policy",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:26.665459Z"
+          }
+        ]
+      },
+      "messages": {
+        "pages": 1,
+        "complete": true,
+        "messages": []
+      }
+    },
+    "fulfillment": {
+      "context": {
+        "pages": 1,
+        "complete": true,
+        "messages": [
+          {
+            "attachments": [],
+            "content": "@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] {\"event\": \"plan\", \"case_id\": \"RET-115451f05dd0\", \"version\": 1, \"request_key\": \"band-init-RET-115451f05dd0-1-plan\", \"request\": \"Review current facts. Coordinate with your colleagues through addressed Band tools.\"}",
+            "id": "01e6ba2a-6a03-49c2-b964-dbeb14b4d176",
+            "inserted_at": "2026-10-03T22:46:11.099830Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:46:11.568564Z",
+                      "error": "Band message must carry the trusted case version.",
+                      "started_at": "2026-10-03T22:46:11.244454Z",
+                      "status": "failed"
+                    },
+                    {
+                      "attempt_number": 2,
+                      "completed_at": "2026-10-03T22:48:11.886808Z",
+                      "error": "Band message must carry the trusted case version.",
+                      "started_at": "2026-10-03T22:48:11.270866Z",
+                      "status": "failed"
+                    },
+                    {
+                      "attempt_number": 3,
+                      "completed_at": "2026-10-03T22:49:11.676724Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:48:58.502202Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 3,
+                  "delivered_at": "2026-10-03T22:46:11.244454Z",
+                  "processed_at": "2026-10-03T22:49:11.676724Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:49:11.679618Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] @[[2847b062-adf1-4185-9726-102330ebd3bd]] **Policy finding for RET-115451f05dd0**\\n\\n**Eligibility: \\u2705 Eligible for return**\\n\\nHere are my findings based on retrieved policy passages:\\n\\n**Return Window (POL-001)**\\nThe merchant accepts returns within 30 days. At 10 days since purchase, this return is within the eligible window.\\n\\n**Condition: Sealed (POL-002)**\\nThe reported condition is **sealed** and no inspection condition contradicts this (inspection_condition is null). Per POL-002, a sealed item may be forwarded directly to a waiting buyer provided:\\n- SKU matches the waiting buyer's order\\n- Arrival meets the buyer's deadline\\n- Merchant approves the current plan\\n\\n**No inspection required** at this stage \\u2014 the item is reported sealed with no contradictory evidence. No restrictions under POL-003 (opened) or POL-004 (damaged) apply.\\n\\n**Summary for Fulfillment:**\\nDirect forwarding to a waiting buyer is policy-eligible for LAMP-01 from zone-oakland, subject to SKU match, deadline feasibility, and merchant approval. No inspection block applies.\\n\\nPolicy version: `demo-policy-v1` | Passages used: POL-001, POL-002\"}",
+            "id": "821204b1-1943-44a6-816c-5a5eab5c6d96",
+            "inserted_at": "2026-10-03T22:49:50.418359Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:21.772916Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:50.920700Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:50.920700Z",
+                  "processed_at": "2026-10-03T22:50:21.772916Z",
+                  "status": "processed"
+                },
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:03.832320Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:49:50.619527Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:49:50.619527Z",
+                  "processed_at": "2026-10-03T22:50:03.832320Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                },
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+            "sender_name": "Policy",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:21.777760Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] Policy has cleared RET-115451f05dd0 for direct forwarding. Please evaluate routing options and report back.\\n\\n**Case facts:**\\n- SKU: LAMP-01\\n- Merchant: merchant-demo-01\\n- Origin zone: zone-oakland\\n- Reported condition: sealed\\n- Reason: Not needed\\n- Elapsed since purchase: 10 days\\n\\n**Policy finding summary:**\\n- \\u2705 Eligible \\u2014 within 30-day return window (10 days elapsed)\\n- Sealed condition confirmed, no inspection required\\n- Direct forwarding to a waiting buyer is policy-eligible, subject to: SKU match, deadline feasibility, and merchant approval\\n- Policy version: demo-policy-v1 | Passages: POL-001, POL-002\\n\\nPlease compare forwarding, warehouse, and inspection route options, check for waiting buyers matching LAMP-01, reserve demand if eligible, and report the recommended destination and costs.\"}",
+            "id": "c6a38808-ca0c-44df-8e9a-94a07efb4dbf",
+            "inserted_at": "2026-10-03T22:49:59.910061Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:34.552362Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:21.895112Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:21.895112Z",
+                  "processed_at": "2026-10-03T22:50:34.552362Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:34.569028Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] **Fulfillment routing for RET-115451f05dd0**\\n\\n**Item:** LAMP-01 | Origin: zone-oakland | Condition: Sealed\\n\\n---\\n\\n**Route Evaluation Summary**\\n\\n| Destination | Type | Eligible | Cost | Transit |\\n|---|---|---|---|---|\\n| Sample merchant warehouse | Warehouse | \\u2705 | $15.00 | 48h |\\n| Sample Buyer A (BUY-001) | Buyer | \\u274c Already fulfilled | $6.00 | 24h |\\n| Sample inspection center | Inspection | \\u274c Not for sealed items | $11.00 | 24h |\\n\\n**Waiting buyers:** None found.\\n\\n---\\n\\n**Selected Route: Sample merchant warehouse**\\n- Shipping: $12.00 | Handling: $3.00 | **Total: $15.00**\\n- Estimated transit: 48 hours\\n- No buyer reservation made \\u2014 no eligible waiting buyer exists.\\n\\nDirect forwarding is policy-eligible per POL-002, but no waiting buyer is available to fulfil it. The lowest-cost eligible known route is **warehouse return** at **$15.00 total**.\\n\\n\\u26a0\\ufe0f **Merchant review required** before approving shipment. No shipment has been approved.\"}",
+            "id": "a8132f8a-2106-4088-be1a-a2fa3e006002",
+            "inserted_at": "2026-10-03T22:50:16.185805Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:52.217588Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:16.385799Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:16.385799Z",
+                  "processed_at": "2026-10-03T22:50:52.217588Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:52.221796Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] **Fulfillment routing for RET-115451f05dd0 (re-addressed)**\\n\\nThis evaluation was already completed and sent. Results are unchanged:\\n\\n**Item:** LAMP-01 | Origin: zone-oakland | Condition: Sealed\\n\\n---\\n\\n**Route Evaluation**\\n\\n| Destination | Type | Eligible | Cost | Transit |\\n|---|---|---|---|---|\\n| Sample merchant warehouse | Warehouse | \\u2705 | $15.00 | 48h |\\n| Sample Buyer A (BUY-001) | Buyer | \\u274c Already fulfilled | \\u2014 | \\u2014 |\\n| Sample inspection center | Inspection | \\u274c Not for sealed items | \\u2014 | \\u2014 |\\n\\n**Waiting buyers (find_waiting_orders):** None found.\\n\\n---\\n\\n**Recommended Route: Sample merchant warehouse**\\n- Shipping: $12.00 | Handling: $3.00 | **Total: $15.00** | Transit: 48h\\n- No buyer reservation \\u2014 no eligible waiting buyer exists.\\n\\n\\u26a0\\ufe0f Merchant approval required before shipment. No shipment has been approved.\"}",
+            "id": "74232e16-7e53-42b4-8b94-ed405922b3d2",
+            "inserted_at": "2026-10-03T22:50:31.865699Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:21.998323Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:52.318926Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:52.318926Z",
+                  "processed_at": "2026-10-03T22:52:21.998323Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:22.001981Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] I need the exact destination_id to use when creating the proposal for RET-115451f05dd0. The system requires a specific destination identifier. For the recommended \\\"Sample merchant warehouse\\\" route, what is the exact destination_id I should pass to create_proposal?\"}",
+            "id": "c4f07e4f-37b2-4830-a97d-0b82e4a1103e",
+            "inserted_at": "2026-10-03T22:50:49.377287Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:50:59.285529Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:50:49.557531Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:50:49.557531Z",
+                  "processed_at": "2026-10-03T22:50:59.285529Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:50:59.290250Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[e8cf9824-eff5-48c7-872a-58d3c0446cf1]] The exact `destination_id` for the recommended route from `compare_routes` is:\\n\\n**`dest-warehouse`**\\n\\nThis corresponds to \\\"Sample merchant warehouse\\\" \\u2014 the only eligible route for RET-115451f05dd0.\"}",
+            "id": "e08ccf12-52c8-4027-8934-2ed8f3b87752",
+            "inserted_at": "2026-10-03T22:50:55.174207Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "e8cf9824-eff5-48c7-872a-58d3c0446cf1": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:30.539546Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:22.122124Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:22.122124Z",
+                  "processed_at": "2026-10-03T22:52:30.539546Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/e8cf9824-eff5-48c7-872a-58d3c0446cf1?g=botz-r3-vivid1&s=48&c=427AE7&l=0.599",
+                  "handle": "nmsharma/returns",
+                  "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+                  "kind": "mention",
+                  "name": "Returns",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+            "sender_name": "Fulfillment",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:30.541571Z"
+          },
+          {
+            "attachments": [],
+            "content": "{\"version\": 1, \"case_id\": \"RET-115451f05dd0\", \"message\": \"@[[2847b062-adf1-4185-9726-102330ebd3bd]] @[[9537c5b0-e3c4-4cda-8bf2-4023bcec1251]] **Returns update for RET-115451f05dd0 \\u2014 Merchant Review Required**\\n\\nBoth findings have been collected and documented. However, `create_proposal` is returning \\\"Destination is not eligible\\\" for all warehouse destination IDs attempted. Since no proposal can be automatically saved at this time, and Fulfillment has flagged that merchant approval is required before any shipment, I am stopping here per workflow rules.\\n\\n**Summary for merchant review:**\\n- \\u2705 Policy: Eligible (within 30-day window, sealed condition, no inspection needed)\\n- \\u2705 Fulfillment: Recommended route \\u2014 warehouse return at $15.00 total (shipping $12.00 + handling $3.00, 48h transit)\\n- \\u274c No waiting buyers found; direct forwarding not available\\n- \\u26a0\\ufe0f Merchant approval required before shipment proceeds\"}",
+            "id": "b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+            "inserted_at": "2026-10-03T22:52:14.668779Z",
+            "message_type": "text",
+            "metadata": {
+              "delivery_status": {
+                "2847b062-adf1-4185-9726-102330ebd3bd": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:18.539941Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:14.849902Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:14.849902Z",
+                  "processed_at": "2026-10-03T22:52:18.539941Z",
+                  "status": "processed"
+                },
+                "9537c5b0-e3c4-4cda-8bf2-4023bcec1251": {
+                  "attempts": [
+                    {
+                      "attempt_number": 1,
+                      "completed_at": "2026-10-03T22:52:26.659514Z",
+                      "error": null,
+                      "started_at": "2026-10-03T22:52:14.855938Z",
+                      "status": "success"
+                    }
+                  ],
+                  "current_attempt": 1,
+                  "delivered_at": "2026-10-03T22:52:14.855938Z",
+                  "processed_at": "2026-10-03T22:52:26.659514Z",
+                  "status": "processed"
+                }
+              },
+              "mentions": [
+                {
+                  "avatar_url": "https://api.band.ai/avatars/2847b062-adf1-4185-9726-102330ebd3bd?g=botz-r3-vivid1&s=48&c=60CBFF&l=0.8",
+                  "handle": "nmsharma/fulfillment",
+                  "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+                  "kind": "mention",
+                  "name": "Fulfillment",
+                  "type": "agent"
+                },
+                {
+                  "avatar_url": "https://api.band.ai/avatars/9537c5b0-e3c4-4cda-8bf2-4023bcec1251?g=botz-r3-vivid1&s=48&c=00D7E3&l=0.8",
+                  "handle": "nmsharma/policy",
+                  "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+                  "kind": "mention",
+                  "name": "Policy",
+                  "type": "agent"
+                }
+              ],
+              "status": "sent"
+            },
+            "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+            "sender_name": "Returns",
+            "sender_type": "Agent",
+            "updated_at": "2026-10-03T22:52:26.665459Z"
+          }
+        ]
+      },
+      "messages": {
+        "pages": 1,
+        "complete": true,
+        "messages": []
+      }
+    }
+  },
+  "matching_research_messages": [],
+  "saved_band_receipts": [
+    {
+      "request_key": "band-delivery-fulfillment-821204b1-1943-44a6-816c-5a5eab5c6d96",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "fulfillment",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "created_at": "2026-10-03 22:49:51.637216+00:00"
+    },
+    {
+      "request_key": "band-delivery-fulfillment-b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "fulfillment",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "created_at": "2026-10-03 22:52:15.048510+00:00"
+    },
+    {
+      "request_key": "band-delivery-fulfillment-c4f07e4f-37b2-4830-a97d-0b82e4a1103e",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "fulfillment",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "created_at": "2026-10-03 22:50:49.786259+00:00"
+    },
+    {
+      "request_key": "band-delivery-fulfillment-c6a38808-ca0c-44df-8e9a-94a07efb4dbf",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "fulfillment",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "created_at": "2026-10-03 22:50:22.070448+00:00"
+    },
+    {
+      "request_key": "band-delivery-policy-51c8401c-ef39-4908-860c-31ca8aa74aff",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "policy",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "f92a22af25004ef982a4541163daadc8"
+      },
+      "created_at": "2026-10-03 22:49:09.673393+00:00"
+    },
+    {
+      "request_key": "band-delivery-policy-b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "policy",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "f92a22af25004ef982a4541163daadc8"
+      },
+      "created_at": "2026-10-03 22:52:15.030692+00:00"
+    },
+    {
+      "request_key": "band-delivery-returns-01e6ba2a-6a03-49c2-b964-dbeb14b4d176",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "returns",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "created_at": "2026-10-03 22:48:59.023436+00:00"
+    },
+    {
+      "request_key": "band-delivery-returns-74232e16-7e53-42b4-8b94-ed405922b3d2",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "returns",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "created_at": "2026-10-03 22:50:52.512908+00:00"
+    },
+    {
+      "request_key": "band-delivery-returns-821204b1-1943-44a6-816c-5a5eab5c6d96",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "returns",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "created_at": "2026-10-03 22:49:50.850625+00:00"
+    },
+    {
+      "request_key": "band-delivery-returns-a8132f8a-2106-4088-be1a-a2fa3e006002",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "returns",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "created_at": "2026-10-03 22:50:16.609703+00:00"
+    },
+    {
+      "request_key": "band-delivery-returns-e08ccf12-52c8-4027-8934-2ed8f3b87752",
+      "provider": "band",
+      "status": "done",
+      "data": {
+        "role": "returns",
+        "case_id": "RET-115451f05dd0",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "created_at": "2026-10-03 22:52:22.325578+00:00"
+    },
+    {
+      "request_key": "band-init-RET-115451f05dd0-1-plan",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "phase": "sent",
+        "case_id": "RET-115451f05dd0",
+        "receipt": {
+          "id": "01e6ba2a-6a03-49c2-b964-dbeb14b4d176",
+          "success": true,
+          "recipients": [
+            {
+              "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+              "name": "Returns",
+              "handle": "nmsharma/returns"
+            }
+          ]
+        },
+        "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+        "version": 1,
+        "addressed_role": "returns",
+        "recovered_from": "ChatParticipant TypeError before participant setup"
+      },
+      "created_at": "2026-10-03 22:29:25.786681+00:00"
+    },
+    {
+      "request_key": "band-init-RET-115451f05dd0-1-research",
+      "provider": "band",
+      "status": "pending",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "version": 1
+      },
+      "created_at": "2026-10-03 22:30:00.540869+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41Z9XDNTR4MXGB1ZQR4SVCA",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/policy"
+        ]
+      },
+      "created_at": "2026-10-03 22:49:08.071031+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZB5XE799JEAP8H5PXEZVF",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns",
+          "nmsharma/fulfillment"
+        ]
+      },
+      "created_at": "2026-10-03 22:49:50.343334+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZBENYJ89NM10W55SR85E4",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/fulfillment"
+        ]
+      },
+      "created_at": "2026-10-03 22:49:59.806330+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZBZVCZ6BT5EGKH7J59ZWP",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns"
+        ]
+      },
+      "created_at": "2026-10-03 22:50:16.051525+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZCF2JQGQ8G7WMMHDEB4CY",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns"
+        ]
+      },
+      "created_at": "2026-10-03 22:50:31.798989+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZCZ14D8N8YKFG5HBV0JGZ",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/fulfillment"
+        ]
+      },
+      "created_at": "2026-10-03 22:50:49.288138+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZD5MGJAHPZHTTATQBJ3SV",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns"
+        ]
+      },
+      "created_at": "2026-10-03 22:50:55.092390+00:00"
+    },
+    {
+      "request_key": "zoo-tool-ctc_01M41ZFKKZH3WGJ6GKHR36S6DA",
+      "provider": "band",
+      "status": "sent",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/fulfillment",
+          "nmsharma/policy"
+        ]
+      },
+      "created_at": "2026-10-03 22:52:14.567602+00:00"
+    }
+  ],
+  "unique_message_count": 11,
+  "outcome": "No research initiation found in complete history; absence does not prove the historical send never crossed the network. Unused request and failed research job superseded; original evidence retained.",
+  "protected_after": {
+    "return_cases": "19b3abacc42ad1d625e4fff39e564943aba4c7d296afa6368c33c466c48c44f1",
+    "shipments": "d75c55949125c900a0c2face3adb3e1d48ab071c5d777b705e0dee1d774e643a",
+    "route_proposals": "fbbac8abde13402885c00b52db52517cb0aa2656c8a73df8a8778fdb3b03c308"
+  }
+}

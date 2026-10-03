@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "load_behavior": {
+    "seed_into_live_destination_list": false,
+    "use": "UI development or offline tests only"
+  },
+  "records": [
+    {
+      "id": "candidate-example-only",
+      "name": "Fictional repair partner \u2014 placeholder",
+      "type": "repair",
+      "zone_id": "zone-shadyside",
+      "accepted_categories": [
+        "lamps"
+      ],
+      "acceptance_status": "unverified",
+      "source_url": null,
+      "source_excerpt": "Synthetic example only. No repair business has accepted this item.",
+      "lookup_time": null,
+      "shipping_cost_cents": null,
+      "service_fee_cents": null,
+      "evidence_origin": "synthetic_placeholder",
+      "counts_as_live_tavily_use": false
+    }
+  ]
+}

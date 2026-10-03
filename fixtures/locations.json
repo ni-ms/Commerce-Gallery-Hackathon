@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "records": [
+    {
+      "id": "zone-oakland",
+      "city": "Pittsburgh",
+      "area": "Oakland",
+      "country": "US"
+    },
+    {
+      "id": "zone-downtown",
+      "city": "Pittsburgh",
+      "area": "Downtown",
+      "country": "US"
+    },
+    {
+      "id": "zone-shadyside",
+      "city": "Pittsburgh",
+      "area": "Shadyside",
+      "country": "US"
+    },
+    {
+      "id": "zone-warehouse",
+      "city": "Demo warehouse zone",
+      "area": "Fictional warehouse location",
+      "country": "US"
+    }
+  ]
+}

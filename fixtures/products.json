@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "records": [
+    {
+      "sku": "LAMP-01",
+      "merchant_id": "merchant-demo-01",
+      "name": "Small reading lamp",
+      "category": "lamps",
+      "weight_g": 900,
+      "retail_price_cents": 3900,
+      "quantity_per_return": 1
+    },
+    {
+      "sku": "LAMP-02",
+      "merchant_id": "merchant-demo-01",
+      "name": "Adjustable desk lamp",
+      "category": "lamps",
+      "weight_g": 1500,
+      "retail_price_cents": 5900,
+      "quantity_per_return": 1
+    },
+    {
+      "sku": "LAMP-03",
+      "merchant_id": "merchant-demo-01",
+      "name": "Ceramic table lamp",
+      "category": "lamps",
+      "weight_g": 2400,
+      "retail_price_cents": 7900,
+      "quantity_per_return": 1
+    },
+    {
+      "sku": "LAMP-04",
+      "merchant_id": "merchant-demo-01",
+      "name": "Clip-on reading lamp",
+      "category": "lamps",
+      "weight_g": 400,
+      "retail_price_cents": 2500,
+      "quantity_per_return": 1
+    },
+    {
+      "sku": "LAMP-05",
+      "merchant_id": "merchant-demo-01",
+      "name": "Compact bedside lamp",
+      "category": "lamps",
+      "weight_g": 1100,
+      "retail_price_cents": 4500,
+      "quantity_per_return": 1
+    }
+  ]
+}

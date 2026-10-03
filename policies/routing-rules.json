@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "policy_version": "demo-policy-v1",
+  "return_window_days": 30,
+  "direct_forwarding_enabled": true,
+  "direct_forwarding_conditions": [
+    "sealed"
+  ],
+  "require_matching_sku": true,
+  "require_waiting_order": true,
+  "require_delivery_deadline_met": true,
+  "unknown_condition_requires_review": true,
+  "opened_requires_inspection_before_resale": true,
+  "damaged_cannot_forward_to_buyer": true,
+  "external_destination_requires_merchant_verification": true,
+  "merchant_approval_required": true,
+  "merchant_approved_destination_ids": [
+    "dest-warehouse",
+    "dest-inspection"
+  ],
+  "missing_shipping_quote_blocks_route": true
+}

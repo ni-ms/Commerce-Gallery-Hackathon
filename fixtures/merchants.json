@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "records": [
+    {
+      "id": "merchant-demo-01",
+      "name": "Gallery Home Lighting \u2014 Fictional Demo Merchant",
+      "policy_version": "demo-policy-v1",
+      "default_warehouse_id": "dest-warehouse",
+      "currency": "USD"
+    }
+  ]
+}

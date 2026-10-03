@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "records": [
+    {
+      "id": "POL-001",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Return eligibility",
+      "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-002",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Direct forwarding",
+      "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-003",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Opened items",
+      "text": "An opened item must undergo inspection before resale. A broken seal blocks forwarding to a waiting buyer, even if the original return form said sealed.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-004",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Damaged items",
+      "text": "A damaged item must not go directly to a waiting buyer. Route it to an approved inspection or warehouse destination, or a merchant-verified repair business.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-005",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Uncertain condition",
+      "text": "If condition is unknown or contradictory, do not assume it is sealed. Request evidence or inspection before resale.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-006",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "External destinations",
+      "text": "A search result is only a candidate. The merchant must verify acceptance and costs before an external business becomes an actionable destination.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-007",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Approval and current facts",
+      "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+      "source_file": "policies/return-policy.md"
+    },
+    {
+      "id": "POL-008",
+      "merchant_id": "merchant-demo-01",
+      "policy_version": "demo-policy-v1",
+      "title": "Reservation limits",
+      "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+      "source_file": "policies/return-policy.md"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+services:
+  devtools:
+    build:
+      context: .
+      dockerfile: infra/devtools.Dockerfile
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - devtools_home:/root
+    environment:
+      ENTIRE_TOKEN_STORE: file
+    stdin_open: true
+    tty: true
+    command: [bash]
+volumes:
+  devtools_home:

@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "rules": {
+    "buyer_handling_fee_cents": 100,
+    "reservation_ttl_seconds": 300,
+    "missing_quote_behavior": "route_unavailable",
+    "cost_formula": "shipping_cost_cents + destination_handling_fee_cents",
+    "include_prior_shipping_legs": true
+  },
+  "records": [
+    {
+      "id": "quote-01",
+      "origin_zone_id": "zone-oakland",
+      "destination_zone_id": "zone-downtown",
+      "max_weight_g": 3000,
+      "shipping_cost_cents": 500,
+      "estimated_transit_hours": 24,
+      "quote_source": "synthetic_fixed_table",
+      "currency": "USD"
+    },
+    {
+      "id": "quote-02",
+      "origin_zone_id": "zone-oakland",
+      "destination_zone_id": "zone-shadyside",
+      "max_weight_g": 3000,
+      "shipping_cost_cents": 700,
+      "estimated_transit_hours": 24,
+      "quote_source": "synthetic_fixed_table",
+      "currency": "USD"
+    },
+    {
+      "id": "quote-03",
+      "origin_zone_id": "zone-oakland",
+      "destination_zone_id": "zone-warehouse",
+      "max_weight_g": 3000,
+      "shipping_cost_cents": 1200,
+      "estimated_transit_hours": 48,
+      "quote_source": "synthetic_fixed_table",
+      "currency": "USD"
+    },
+    {
+      "id": "quote-04",
+      "origin_zone_id": "zone-shadyside",
+      "destination_zone_id": "zone-downtown",
+      "max_weight_g": 3000,
+      "shipping_cost_cents": 500,
+      "estimated_transit_hours": 24,
+      "quote_source": "synthetic_fixed_table",
+      "currency": "USD"
+    },
+    {
+      "id": "quote-05",
+      "origin_zone_id": "zone-shadyside",
+      "destination_zone_id": "zone-shadyside",
+      "max_weight_g": 3000,
+      "shipping_cost_cents": 300,
+      "estimated_transit_hours": 12,
+      "quote_source": "synthetic_fixed_table",
+      "currency": "USD"
+    },
+    {
+      "id": "quote-06",
+      "origin_zone_id": "zone-shadyside",
+      "destination_zone_id": "zone-warehouse",
+      "max_weight_g": 3000,
+      "shipping_cost_cents": 1000,
+      "estimated_transit_hours": 48,
+      "quote_source": "synthetic_fixed_table",
+      "currency": "USD"
+    }
+  ]
+}

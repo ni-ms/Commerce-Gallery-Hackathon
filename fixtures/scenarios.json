@@ -1,0 +1,266 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "execution": {
+    "reset_before_each_scenario": true,
+    "load_all_base_records": true,
+    "enqueue_only_listed_case_ids": true,
+    "anchor_deadlines_to_scenario_start": true,
+    "script_actions_are_specifications_not_implemented_commands": true
+  },
+  "records": [
+    {
+      "id": "normal",
+      "case_ids": [
+        "RET-001"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-001"
+        },
+        {
+          "type": "merchant_approve_current_proposal"
+        }
+      ],
+      "expected": {
+        "buyer_order_id": "BUY-001",
+        "warehouse_cost_cents": 1500,
+        "selected_cost_cents": 600,
+        "estimated_saving_cents": 900,
+        "shipment_count": 1
+      }
+    },
+    {
+      "id": "inspection-block",
+      "case_ids": [
+        "RET-002"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-002"
+        },
+        {
+          "type": "wait_for_proposal"
+        },
+        {
+          "type": "record_inspection",
+          "case_id": "RET-002",
+          "condition": "opened",
+          "note": "Seal is broken; no shipment has been dispatched."
+        },
+        {
+          "type": "attempt_approval_of_old_proposal"
+        },
+        {
+          "type": "wait_for_revised_proposal"
+        }
+      ],
+      "expected": {
+        "initial_buyer_order_id": "BUY-002",
+        "initial_cost_cents": 800,
+        "old_approval_rejected": true,
+        "buyer_reservation_released": true,
+        "inspection_route_cost_cents": 1100,
+        "requires_new_approval": true
+      }
+    },
+    {
+      "id": "external-research",
+      "case_ids": [
+        "RET-003"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-003"
+        },
+        {
+          "type": "merchant_request_external_options"
+        }
+      ],
+      "expected": {
+        "direct_to_buyer_allowed": false,
+        "tavily_called": true,
+        "new_candidates_status": "unverified",
+        "automatic_external_shipment_allowed": false,
+        "fallback_destination_ids": [
+          "dest-inspection",
+          "dest-warehouse"
+        ],
+        "search_results_not_guaranteed": true
+      }
+    },
+    {
+      "id": "no-waiting-buyer",
+      "case_ids": [
+        "RET-004"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-004"
+        }
+      ],
+      "expected": {
+        "waiting_buyer_count": 0,
+        "warehouse_route_available": true,
+        "warehouse_cost_cents": 1500,
+        "buyer_reservation_count": 0
+      }
+    },
+    {
+      "id": "uncertain-condition",
+      "case_ids": [
+        "RET-005"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-005"
+        }
+      ],
+      "expected": {
+        "direct_to_buyer_allowed": false,
+        "needs_evidence_or_inspection": true,
+        "condition_must_not_be_invented": true
+      }
+    },
+    {
+      "id": "competing-returns",
+      "case_ids": [
+        "RET-006",
+        "RET-007"
+      ],
+      "actions": [
+        {
+          "type": "start_cases_concurrently",
+          "case_ids": [
+            "RET-006",
+            "RET-007"
+          ]
+        }
+      ],
+      "expected": {
+        "competing_buyer_order_id": "BUY-005",
+        "active_reservations_for_buyer_max": 1,
+        "winner_not_predetermined": true,
+        "losing_case_replans": true
+      }
+    },
+    {
+      "id": "reservation-expiry",
+      "case_ids": [
+        "RET-008"
+      ],
+      "test_overrides": {
+        "reservation_ttl_seconds": 15
+      },
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-008"
+        },
+        {
+          "type": "wait_for_proposal"
+        },
+        {
+          "type": "wait_until_reservation_expired"
+        },
+        {
+          "type": "merchant_attempt_approval"
+        }
+      ],
+      "expected": {
+        "expired_approval_rejected": true,
+        "shipment_count": 0,
+        "replanning_requested": true
+      }
+    },
+    {
+      "id": "policy-change",
+      "case_ids": [
+        "RET-009"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-009"
+        },
+        {
+          "type": "wait_for_proposal"
+        },
+        {
+          "type": "apply_policy_patch",
+          "new_version": "demo-policy-v2",
+          "change": {
+            "direct_forwarding_enabled": false
+          }
+        },
+        {
+          "type": "attempt_approval_of_old_proposal"
+        }
+      ],
+      "expected": {
+        "old_approval_rejected": true,
+        "direct_forwarding_disabled": true,
+        "new_policy_review_required": true
+      }
+    },
+    {
+      "id": "duplicate-approval",
+      "case_ids": [
+        "RET-010"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-010"
+        },
+        {
+          "type": "wait_for_proposal"
+        },
+        {
+          "type": "approve_twice_with_same_request_key",
+          "request_key": "sample-approval-RET-010"
+        }
+      ],
+      "expected": {
+        "shipment_count": 1,
+        "same_shipment_returned": true
+      }
+    },
+    {
+      "id": "worker-restart",
+      "case_ids": [
+        "RET-001"
+      ],
+      "actions": [
+        {
+          "type": "start_case",
+          "case_id": "RET-001"
+        },
+        {
+          "type": "restart_worker_after_reservation"
+        },
+        {
+          "type": "wait_for_recovery"
+        },
+        {
+          "type": "merchant_approve_current_proposal"
+        }
+      ],
+      "expected": {
+        "case_preserved": true,
+        "active_reservations_for_case_max": 1,
+        "shipment_count": 1,
+        "no_new_agent_identity_on_restart": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+name: smarter-returns
+x-app: &app
+  build:
+    context: .
+    dockerfile: infra/backend.Dockerfile
+  environment: &environment
+    DATABASE_URL: postgresql://returns:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/returns
+    APP_SESSION_SECRET: ${APP_SESSION_SECRET:?Set APP_SESSION_SECRET in .env}
+    MERCHANT_PASSCODE: ${MERCHANT_PASSCODE:?Set MERCHANT_PASSCODE in .env}
+    APP_ORIGIN: ${APP_ORIGIN:-http://localhost:8080}
+    EXECUTION_MODE: ${EXECUTION_MODE:-demo}
+  depends_on:
+    db:
+      condition: service_healthy
+  restart: unless-stopped
+services:
+  db:
+    image: postgres:16.8-alpine
+    environment:
+      POSTGRES_DB: returns
+      POSTGRES_USER: returns
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U returns -d returns"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  init:
+    <<: *app
+    command: [python, -m, app.bootstrap]
+    restart: "no"
+  api:
+    <<: *app
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -m, app.health, api]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+  worker:
+    <<: *app
+    command: [python, -m, app.worker]
+    env_file:
+      - path: .env.providers
+        required: false
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -m, app.health, worker]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+  web:
+    build:
+      context: .
+      dockerfile: infra/web.Dockerfile
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-http://localhost}
+    ports:
+      - ${HTTP_BIND:-127.0.0.1:8080:80}
+      - ${HTTPS_BIND:-127.0.0.1:8443:443}
+    volumes: [caddy_data:/data, caddy_config:/config]
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+  test:
+    <<: *app
+    profiles: [test]
+    environment:
+      <<: *environment
+      DATABASE_URL: postgresql://returns:${POSTGRES_PASSWORD}@db:5432/returns_test
+    command: [python, -m, pytest, -q, tests]
+    restart: "no"
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "merchant_id": "merchant-demo-01",
+    "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+    "schema_version": 1
+  },
+  "records": [
+    {
+      "id": "BUY-001",
+      "merchant_id": "merchant-demo-01",
+      "customer_alias": "Sample Buyer A",
+      "sku": "LAMP-01",
+      "quantity": 1,
+      "destination_zone_id": "zone-downtown",
+      "status": "waiting_for_stock",
+      "required_condition": "sealed",
+      "delivery_deadline_hours_from_start": 72
+    },
+    {
+      "id": "BUY-002",
+      "merchant_id": "merchant-demo-01",
+      "customer_alias": "Sample Buyer B",
+      "sku": "LAMP-02",
+      "quantity": 1,
+      "destination_zone_id": "zone-shadyside",
+      "status": "waiting_for_stock",
+      "required_condition": "sealed",
+      "delivery_deadline_hours_from_start": 72
+    },
+    {
+      "id": "BUY-003",
+      "merchant_id": "merchant-demo-01",
+      "customer_alias": "Sample Buyer C",
+      "sku": "LAMP-03",
+      "quantity": 1,
+      "destination_zone_id": "zone-downtown",
+      "status": "waiting_for_stock",
+      "required_condition": "sealed",
+      "delivery_deadline_hours_from_start": 72
+    },
+    {
+      "id": "BUY-005",
+      "merchant_id": "merchant-demo-01",
+      "customer_alias": "Sample Buyer D",
+      "sku": "LAMP-05",
+      "quantity": 1,
+      "destination_zone_id": "zone-downtown",
+      "status": "waiting_for_stock",
+      "required_condition": "sealed",
+      "delivery_deadline_hours_from_start": 72
+    }
+  ]
+}

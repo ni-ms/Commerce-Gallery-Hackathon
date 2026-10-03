@@ -1,0 +1,8 @@
+.env
+.env.providers
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+backups/
