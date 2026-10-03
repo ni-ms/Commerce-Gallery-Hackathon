@@ -1,0 +1,2197 @@
+{
+  "agent_sessions": [
+    {
+      "case_id": "RET-115451f05dd0",
+      "data": {
+        "after": 43,
+        "agent_id": "agt_01m41y3v4vx3esyg7qg5kd5q7b",
+        "posted": true,
+        "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+        "session_id": "f92a22af25004ef982a4541163daadc8",
+        "started_at": "2026-10-03T22:52:15.016666+00:00",
+        "version": 1
+      },
+      "role": "policy"
+    },
+    {
+      "case_id": "RET-115451f05dd0",
+      "data": {
+        "after": 63,
+        "agent_id": "agt_01m41y3wxhv781drtgnp03ga61",
+        "posted": true,
+        "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02",
+        "started_at": "2026-10-03T22:52:15.042056+00:00",
+        "version": 1
+      },
+      "role": "fulfillment"
+    },
+    {
+      "case_id": "RET-115451f05dd0",
+      "data": {
+        "after": 133,
+        "agent_id": "agt_01m41y3s8n7gvmmx82zcsvrm5a",
+        "posted": true,
+        "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9",
+        "started_at": "2026-10-03T22:52:22.318760+00:00",
+        "version": 1
+      },
+      "role": "returns"
+    }
+  ],
+  "buyer_orders": [
+    {
+      "data": {
+        "customer_alias": "Sample Buyer B",
+        "delivery_deadline_hours_from_start": 72,
+        "destination_zone_id": "zone-shadyside",
+        "id": "BUY-002",
+        "merchant_id": "merchant-demo-01",
+        "quantity": 1,
+        "required_condition": "sealed",
+        "sku": "LAMP-02",
+        "status": "waiting_for_stock"
+      },
+      "deadline": "2026-10-06 20:12:26.014552+00:00",
+      "fulfilled": false,
+      "id": "BUY-002"
+    },
+    {
+      "data": {
+        "customer_alias": "Sample Buyer C",
+        "delivery_deadline_hours_from_start": 72,
+        "destination_zone_id": "zone-downtown",
+        "id": "BUY-003",
+        "merchant_id": "merchant-demo-01",
+        "quantity": 1,
+        "required_condition": "sealed",
+        "sku": "LAMP-03",
+        "status": "waiting_for_stock"
+      },
+      "deadline": "2026-10-06 20:12:26.014552+00:00",
+      "fulfilled": false,
+      "id": "BUY-003"
+    },
+    {
+      "data": {
+        "customer_alias": "Sample Buyer D",
+        "delivery_deadline_hours_from_start": 72,
+        "destination_zone_id": "zone-downtown",
+        "id": "BUY-005",
+        "merchant_id": "merchant-demo-01",
+        "quantity": 1,
+        "required_condition": "sealed",
+        "sku": "LAMP-05",
+        "status": "waiting_for_stock"
+      },
+      "deadline": "2026-10-06 20:12:26.014552+00:00",
+      "fulfilled": false,
+      "id": "BUY-005"
+    },
+    {
+      "data": {
+        "customer_alias": "Sample Buyer A",
+        "delivery_deadline_hours_from_start": 72,
+        "destination_zone_id": "zone-downtown",
+        "id": "BUY-001",
+        "merchant_id": "merchant-demo-01",
+        "quantity": 1,
+        "required_condition": "sealed",
+        "sku": "LAMP-01",
+        "status": "waiting_for_stock"
+      },
+      "deadline": "2026-10-06 20:12:26.014552+00:00",
+      "fulfilled": true,
+      "id": "BUY-001"
+    }
+  ],
+  "destinations": [
+    {
+      "data": {
+        "acceptance_status": "merchant_approved",
+        "accepted_conditions": [
+          "sealed",
+          "opened",
+          "damaged",
+          "unknown"
+        ],
+        "evidence_origin": "synthetic_merchant_policy",
+        "handling_fee_cents": 300,
+        "id": "dest-warehouse",
+        "merchant_id": "merchant-demo-01",
+        "name": "Sample merchant warehouse",
+        "type": "warehouse",
+        "zone_id": "zone-warehouse"
+      },
+      "id": "dest-warehouse"
+    },
+    {
+      "data": {
+        "acceptance_status": "merchant_approved",
+        "accepted_conditions": [
+          "opened",
+          "damaged",
+          "unknown"
+        ],
+        "evidence_origin": "synthetic_merchant_policy",
+        "handling_fee_cents": 400,
+        "id": "dest-inspection",
+        "merchant_id": "merchant-demo-01",
+        "name": "Sample inspection center",
+        "type": "inspection",
+        "zone_id": "zone-shadyside"
+      },
+      "id": "dest-inspection"
+    }
+  ],
+  "locations": [
+    {
+      "data": {
+        "area": "Oakland",
+        "city": "Pittsburgh",
+        "country": "US",
+        "id": "zone-oakland"
+      },
+      "id": "zone-oakland"
+    },
+    {
+      "data": {
+        "area": "Downtown",
+        "city": "Pittsburgh",
+        "country": "US",
+        "id": "zone-downtown"
+      },
+      "id": "zone-downtown"
+    },
+    {
+      "data": {
+        "area": "Shadyside",
+        "city": "Pittsburgh",
+        "country": "US",
+        "id": "zone-shadyside"
+      },
+      "id": "zone-shadyside"
+    },
+    {
+      "data": {
+        "area": "Fictional warehouse location",
+        "city": "Demo warehouse zone",
+        "country": "US",
+        "id": "zone-warehouse"
+      },
+      "id": "zone-warehouse"
+    }
+  ],
+  "merchants": [
+    {
+      "data": {
+        "cost_rules": {
+          "buyer_handling_fee_cents": 100,
+          "cost_formula": "shipping_cost_cents + destination_handling_fee_cents",
+          "include_prior_shipping_legs": true,
+          "missing_quote_behavior": "route_unavailable",
+          "reservation_ttl_seconds": 300
+        },
+        "currency": "USD",
+        "default_warehouse_id": "dest-warehouse",
+        "id": "merchant-demo-01",
+        "name": "Gallery Home Lighting \u2014 Fictional Demo Merchant",
+        "policy_version": "demo-policy-v1",
+        "rules": {
+          "damaged_cannot_forward_to_buyer": true,
+          "direct_forwarding_conditions": [
+            "sealed"
+          ],
+          "direct_forwarding_enabled": true,
+          "external_destination_requires_merchant_verification": true,
+          "merchant_approval_required": true,
+          "merchant_approved_destination_ids": [
+            "dest-warehouse",
+            "dest-inspection"
+          ],
+          "metadata": {
+            "merchant_id": "merchant-demo-01",
+            "purpose": "Hackathon fixtures; no real customers, transactions, policies, quotes, or merchant participation.",
+            "schema_version": 1,
+            "synthetic": true
+          },
+          "missing_shipping_quote_blocks_route": true,
+          "opened_requires_inspection_before_resale": true,
+          "policy_version": "demo-policy-v1",
+          "require_delivery_deadline_met": true,
+          "require_matching_sku": true,
+          "require_waiting_order": true,
+          "return_window_days": 30,
+          "unknown_condition_requires_review": true
+        },
+        "synthetic": true
+      },
+      "id": "merchant-demo-01"
+    }
+  ],
+  "policy_passages": [
+    {
+      "data": {
+        "id": "POL-001",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+        "title": "Return eligibility"
+      },
+      "id": "POL-001"
+    },
+    {
+      "data": {
+        "id": "POL-002",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+        "title": "Direct forwarding"
+      },
+      "id": "POL-002"
+    },
+    {
+      "data": {
+        "id": "POL-003",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "An opened item must undergo inspection before resale. A broken seal blocks forwarding to a waiting buyer, even if the original return form said sealed.",
+        "title": "Opened items"
+      },
+      "id": "POL-003"
+    },
+    {
+      "data": {
+        "id": "POL-004",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "A damaged item must not go directly to a waiting buyer. Route it to an approved inspection or warehouse destination, or a merchant-verified repair business.",
+        "title": "Damaged items"
+      },
+      "id": "POL-004"
+    },
+    {
+      "data": {
+        "id": "POL-005",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "If condition is unknown or contradictory, do not assume it is sealed. Request evidence or inspection before resale.",
+        "title": "Uncertain condition"
+      },
+      "id": "POL-005"
+    },
+    {
+      "data": {
+        "id": "POL-006",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "A search result is only a candidate. The merchant must verify acceptance and costs before an external business becomes an actionable destination.",
+        "title": "External destinations"
+      },
+      "id": "POL-006"
+    },
+    {
+      "data": {
+        "id": "POL-007",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+        "title": "Approval and current facts"
+      },
+      "id": "POL-007"
+    },
+    {
+      "data": {
+        "id": "POL-008",
+        "merchant_id": "merchant-demo-01",
+        "policy_version": "demo-policy-v1",
+        "source_file": "policies/return-policy.md",
+        "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+        "title": "Reservation limits"
+      },
+      "id": "POL-008"
+    }
+  ],
+  "products": [
+    {
+      "data": {
+        "category": "lamps",
+        "merchant_id": "merchant-demo-01",
+        "name": "Small reading lamp",
+        "quantity_per_return": 1,
+        "retail_price_cents": 3900,
+        "sku": "LAMP-01",
+        "weight_g": 900
+      },
+      "id": "LAMP-01"
+    },
+    {
+      "data": {
+        "category": "lamps",
+        "merchant_id": "merchant-demo-01",
+        "name": "Adjustable desk lamp",
+        "quantity_per_return": 1,
+        "retail_price_cents": 5900,
+        "sku": "LAMP-02",
+        "weight_g": 1500
+      },
+      "id": "LAMP-02"
+    },
+    {
+      "data": {
+        "category": "lamps",
+        "merchant_id": "merchant-demo-01",
+        "name": "Ceramic table lamp",
+        "quantity_per_return": 1,
+        "retail_price_cents": 7900,
+        "sku": "LAMP-03",
+        "weight_g": 2400
+      },
+      "id": "LAMP-03"
+    },
+    {
+      "data": {
+        "category": "lamps",
+        "merchant_id": "merchant-demo-01",
+        "name": "Clip-on reading lamp",
+        "quantity_per_return": 1,
+        "retail_price_cents": 2500,
+        "sku": "LAMP-04",
+        "weight_g": 400
+      },
+      "id": "LAMP-04"
+    },
+    {
+      "data": {
+        "category": "lamps",
+        "merchant_id": "merchant-demo-01",
+        "name": "Compact bedside lamp",
+        "quantity_per_return": 1,
+        "retail_price_cents": 4500,
+        "sku": "LAMP-05",
+        "weight_g": 1100
+      },
+      "id": "LAMP-05"
+    }
+  ],
+  "provider_calls": [
+    {
+      "created_at": "2026-10-03 22:28:18.695203+00:00",
+      "data": {
+        "agent_id": "agt_01m41y3s8n7gvmmx82zcsvrm5a",
+        "role": "returns"
+      },
+      "provider": "zoowork",
+      "request_key": "zoo-agent-returns",
+      "status": "created"
+    },
+    {
+      "created_at": "2026-10-03 22:28:20.608473+00:00",
+      "data": {
+        "agent_id": "agt_01m41y3v4vx3esyg7qg5kd5q7b",
+        "role": "policy"
+      },
+      "provider": "zoowork",
+      "request_key": "zoo-agent-policy",
+      "status": "created"
+    },
+    {
+      "created_at": "2026-10-03 22:28:22.412016+00:00",
+      "data": {
+        "agent_id": "agt_01m41y3wxhv781drtgnp03ga61",
+        "role": "fulfillment"
+      },
+      "provider": "zoowork",
+      "request_key": "zoo-agent-fulfillment",
+      "status": "created"
+    },
+    {
+      "created_at": "2026-10-03 22:29:25.786681+00:00",
+      "data": {
+        "addressed_role": "returns",
+        "case_id": "RET-115451f05dd0",
+        "phase": "sent",
+        "receipt": {
+          "id": "01e6ba2a-6a03-49c2-b964-dbeb14b4d176",
+          "recipients": [
+            {
+              "handle": "nmsharma/returns",
+              "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+              "name": "Returns"
+            }
+          ],
+          "success": true
+        },
+        "recovered_from": "ChatParticipant TypeError before participant setup",
+        "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+        "version": 1
+      },
+      "provider": "band",
+      "request_key": "band-init-RET-115451f05dd0-1-plan",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:50:49.288138+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/fulfillment"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZCZ14D8N8YKFG5HBV0JGZ",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:49:08.071031+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/policy"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41Z9XDNTR4MXGB1ZQR4SVCA",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:50:16.051525+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZBZVCZ6BT5EGKH7J59ZWP",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:48:59.023436+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "returns",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-returns-01e6ba2a-6a03-49c2-b964-dbeb14b4d176",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:49:25.833910+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "latency_ms": 0,
+        "passages": [
+          {
+            "id": "POL-001",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+            "title": "Return eligibility"
+          },
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          },
+          {
+            "id": "POL-003",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "An opened item must undergo inspection before resale. A broken seal blocks forwarding to a waiting buyer, even if the original return form said sealed.",
+            "title": "Opened items"
+          },
+          {
+            "id": "POL-005",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "If condition is unknown or contradictory, do not assume it is sealed. Request evidence or inspection before resale.",
+            "title": "Uncertain condition"
+          },
+          {
+            "id": "POL-008",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+            "title": "Reservation limits"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "provider": "moss",
+      "request_key": "zoo-tool-ctc_01M41ZA43004JKXZPC3YJCV051",
+      "status": "succeeded"
+    },
+    {
+      "created_at": "2026-10-03 22:49:28.565933+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "latency_ms": 1,
+        "passages": [
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          },
+          {
+            "id": "POL-004",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A damaged item must not go directly to a waiting buyer. Route it to an approved inspection or warehouse destination, or a merchant-verified repair business.",
+            "title": "Damaged items"
+          },
+          {
+            "id": "POL-006",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A search result is only a candidate. The merchant must verify acceptance and costs before an external business becomes an actionable destination.",
+            "title": "External destinations"
+          },
+          {
+            "id": "POL-007",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+            "title": "Approval and current facts"
+          },
+          {
+            "id": "POL-008",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+            "title": "Reservation limits"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "provider": "moss",
+      "request_key": "zoo-tool-ctc_01M41ZAHGMFEJ469PX3YCRYA4B",
+      "status": "succeeded"
+    },
+    {
+      "created_at": "2026-10-03 22:49:50.343334+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns",
+          "nmsharma/fulfillment"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZB5XE799JEAP8H5PXEZVF",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:49:09.673393+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "policy",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "f92a22af25004ef982a4541163daadc8"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-policy-51c8401c-ef39-4908-860c-31ca8aa74aff",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:49:59.806330+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/fulfillment"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZBENYJ89NM10W55SR85E4",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:49:50.850625+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "returns",
+        "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-returns-821204b1-1943-44a6-816c-5a5eab5c6d96",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:50:49.786259+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "fulfillment",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-fulfillment-c4f07e4f-37b2-4830-a97d-0b82e4a1103e",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:49:51.637216+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "fulfillment",
+        "sender_id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-fulfillment-821204b1-1943-44a6-816c-5a5eab5c6d96",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:50:31.798989+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZCF2JQGQ8G7WMMHDEB4CY",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:50:22.070448+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "fulfillment",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-fulfillment-c6a38808-ca0c-44df-8e9a-94a07efb4dbf",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:50:16.609703+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "returns",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-returns-a8132f8a-2106-4088-be1a-a2fa3e006002",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:50:55.092390+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/returns"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZD5MGJAHPZHTTATQBJ3SV",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:52:14.567602+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "mentions": [
+          "nmsharma/fulfillment",
+          "nmsharma/policy"
+        ]
+      },
+      "provider": "band",
+      "request_key": "zoo-tool-ctc_01M41ZFKKZH3WGJ6GKHR36S6DA",
+      "status": "sent"
+    },
+    {
+      "created_at": "2026-10-03 22:52:15.048510+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "fulfillment",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "60a64e1ce7834b2893a59b65c9accb02"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-fulfillment-b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:50:52.512908+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "returns",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-returns-74232e16-7e53-42b4-8b94-ed405922b3d2",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:52:15.030692+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "policy",
+        "sender_id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+        "session_id": "f92a22af25004ef982a4541163daadc8"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-policy-b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:52:22.325578+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "role": "returns",
+        "sender_id": "2847b062-adf1-4185-9726-102330ebd3bd",
+        "session_id": "2c4d9b32450c4f9f8681f8c11805ddd9"
+      },
+      "provider": "band",
+      "request_key": "band-delivery-returns-e08ccf12-52c8-4027-8934-2ed8f3b87752",
+      "status": "done"
+    },
+    {
+      "created_at": "2026-10-03 22:30:00.540869+00:00",
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "supersession": {
+          "at": "2026-10-03T23:08:43.956693+00:00",
+          "complete_history_roles": [
+            "returns",
+            "policy",
+            "fulfillment"
+          ],
+          "matching_research_messages": 0,
+          "original_data": {
+            "case_id": "RET-115451f05dd0",
+            "version": 1
+          },
+          "original_job": {
+            "attempts": 2,
+            "available_at": "2026-10-03 22:30:11.017917+00:00",
+            "case_id": "RET-115451f05dd0",
+            "error": "Band initiation acknowledgement is uncertain; merchant review required.",
+            "id": 7,
+            "lease_until": null,
+            "status": "failed",
+            "type": "research",
+            "version": 1
+          },
+          "original_status": "pending",
+          "reason": "Repair research is irrelevant to this sealed item. No uncertain message resent. Historical send acknowledgement remains unproven.",
+          "room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+          "unique_message_count": 11
+        },
+        "version": 1
+      },
+      "provider": "band",
+      "request_key": "band-init-RET-115451f05dd0-1-research",
+      "status": "superseded"
+    }
+  ],
+  "quotes": [
+    {
+      "data": {
+        "currency": "USD",
+        "destination_zone_id": "zone-downtown",
+        "estimated_transit_hours": 24,
+        "id": "quote-01",
+        "max_weight_g": 3000,
+        "origin_zone_id": "zone-oakland",
+        "quote_source": "synthetic_fixed_table",
+        "shipping_cost_cents": 500
+      },
+      "id": "quote-01"
+    },
+    {
+      "data": {
+        "currency": "USD",
+        "destination_zone_id": "zone-shadyside",
+        "estimated_transit_hours": 24,
+        "id": "quote-02",
+        "max_weight_g": 3000,
+        "origin_zone_id": "zone-oakland",
+        "quote_source": "synthetic_fixed_table",
+        "shipping_cost_cents": 700
+      },
+      "id": "quote-02"
+    },
+    {
+      "data": {
+        "currency": "USD",
+        "destination_zone_id": "zone-warehouse",
+        "estimated_transit_hours": 48,
+        "id": "quote-03",
+        "max_weight_g": 3000,
+        "origin_zone_id": "zone-oakland",
+        "quote_source": "synthetic_fixed_table",
+        "shipping_cost_cents": 1200
+      },
+      "id": "quote-03"
+    },
+    {
+      "data": {
+        "currency": "USD",
+        "destination_zone_id": "zone-downtown",
+        "estimated_transit_hours": 24,
+        "id": "quote-04",
+        "max_weight_g": 3000,
+        "origin_zone_id": "zone-shadyside",
+        "quote_source": "synthetic_fixed_table",
+        "shipping_cost_cents": 500
+      },
+      "id": "quote-04"
+    },
+    {
+      "data": {
+        "currency": "USD",
+        "destination_zone_id": "zone-shadyside",
+        "estimated_transit_hours": 12,
+        "id": "quote-05",
+        "max_weight_g": 3000,
+        "origin_zone_id": "zone-shadyside",
+        "quote_source": "synthetic_fixed_table",
+        "shipping_cost_cents": 300
+      },
+      "id": "quote-05"
+    },
+    {
+      "data": {
+        "currency": "USD",
+        "destination_zone_id": "zone-warehouse",
+        "estimated_transit_hours": 48,
+        "id": "quote-06",
+        "max_weight_g": 3000,
+        "origin_zone_id": "zone-shadyside",
+        "quote_source": "synthetic_fixed_table",
+        "shipping_cost_cents": 1000
+      },
+      "id": "quote-06"
+    }
+  ],
+  "reservations": [
+    {
+      "buyer_id": "BUY-001",
+      "case_id": "RET-001",
+      "expires_at": "2026-10-03 20:19:30.491129+00:00",
+      "id": "RSV-cd1e6f3926a3",
+      "status": "consumed",
+      "version": 1
+    },
+    {
+      "buyer_id": "BUY-002",
+      "case_id": "RET-002",
+      "expires_at": "2026-10-03 20:20:45.631109+00:00",
+      "id": "RSV-9bbcae9b77f1",
+      "status": "released",
+      "version": 1
+    }
+  ],
+  "return_cases": [
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 3",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-003",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "The lamp base is cracked. Please review repair options.",
+        "reported_condition": "damaged",
+        "sku": "LAMP-03",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-003",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 4",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-004",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. I no longer need it.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-04",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-004",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 5",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-005",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "I cannot tell whether the box was opened.",
+        "reported_condition": "unknown",
+        "sku": "LAMP-05",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-005",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 6",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-006",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. I bought an extra one.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-05",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-006",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 7",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-007",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. It was a duplicate gift.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-05",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-007",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 8",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-008",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. I chose a different model.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-01",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-008",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 9",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-009",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. I ordered the wrong size.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-02",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-009",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 10",
+        "elapsed_since_purchase_days": 10,
+        "id": "RET-010",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. I ordered two and only need one.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-01",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-010",
+      "status": "submitted",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 1",
+        "elapsed_since_purchase_days": 10,
+        "finding": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "id": "RET-001",
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "Unopened. I ordered the wrong color.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-01",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-001",
+      "status": "approved",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 20:12:25.965031+00:00",
+      "data": {
+        "band_room_id": null,
+        "created_at": null,
+        "customer_alias": "Sample Returner 2",
+        "elapsed_since_purchase_days": 10,
+        "finding": {
+          "case_version": 2,
+          "condition": "opened",
+          "direct_forwarding": false,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-003",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "An opened item must undergo inspection before resale. A broken seal blocks forwarding to a waiting buyer, even if the original return form said sealed.",
+              "title": "Opened items"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "handoffs": 0,
+        "id": "RET-002",
+        "inspection_actor": "merchant",
+        "inspection_condition": "opened",
+        "inspection_note": "Seal is broken. No shipment has been dispatched.",
+        "merchant_id": "merchant-demo-01",
+        "moss_passage_ids": [],
+        "origin_zone_id": "zone-oakland",
+        "quantity": 1,
+        "reason": "The box appears sealed. I changed my mind.",
+        "reported_condition": "sealed",
+        "sku": "LAMP-02",
+        "status": "submitted",
+        "version": 1
+      },
+      "id": "RET-002",
+      "status": "awaiting_approval",
+      "version": 2
+    },
+    {
+      "created_at": "2026-10-03 20:22:18.619939+00:00",
+      "data": {
+        "customer_alias": "Demo returner",
+        "elapsed_since_purchase_days": 10,
+        "finding": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "reason": "Container HTTP persistence verification",
+        "reported_condition": "sealed",
+        "sku": "LAMP-04"
+      },
+      "id": "RET-eeaa1aecca77",
+      "status": "approved",
+      "version": 1
+    },
+    {
+      "created_at": "2026-10-03 22:29:25.345222+00:00",
+      "data": {
+        "band_room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+        "customer_alias": "Demo returner",
+        "elapsed_since_purchase_days": 10,
+        "finding": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "live Moss retrieval",
+          "passages": [
+            {
+              "id": "POL-001",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+              "title": "Return eligibility"
+            },
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "handoffs": 8,
+        "inspection_condition": null,
+        "merchant_id": "merchant-demo-01",
+        "origin_zone_id": "zone-oakland",
+        "policy_case_version": 1,
+        "policy_passage_ids": [
+          "POL-004",
+          "POL-005",
+          "POL-006",
+          "POL-001",
+          "POL-007",
+          "POL-002",
+          "POL-003",
+          "POL-008"
+        ],
+        "policy_retrieval_provider": "moss",
+        "reason": "Not needed",
+        "reported_condition": "sealed",
+        "retrieval_policy_version": "demo-policy-v1",
+        "sku": "LAMP-01"
+      },
+      "id": "RET-115451f05dd0",
+      "status": "awaiting_approval",
+      "version": 1
+    }
+  ],
+  "route_proposals": [
+    {
+      "case_id": "RET-001",
+      "case_version": 1,
+      "data": {
+        "estimated_saving_cents": 900,
+        "evidence": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "route": {
+          "conditional": true,
+          "cost": {
+            "handling_fee_cents": 100,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 500,
+            "total_cents": 600,
+            "transit_hours": 24
+          },
+          "destination_id": "BUY-001",
+          "eligible": true,
+          "name": "Sample Buyer A",
+          "reason": null,
+          "type": "buyer"
+        },
+        "simulated": true,
+        "warehouse_cost_cents": 1500
+      },
+      "destination_id": "BUY-001",
+      "id": "PLAN-8013e0503fbd",
+      "policy_version": "demo-policy-v1",
+      "status": "approved"
+    },
+    {
+      "case_id": "RET-002",
+      "case_version": 1,
+      "data": {
+        "estimated_saving_cents": 700,
+        "evidence": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "route": {
+          "conditional": true,
+          "cost": {
+            "handling_fee_cents": 100,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 700,
+            "total_cents": 800,
+            "transit_hours": 24
+          },
+          "destination_id": "BUY-002",
+          "eligible": true,
+          "name": "Sample Buyer B",
+          "reason": null,
+          "type": "buyer"
+        },
+        "simulated": true,
+        "warehouse_cost_cents": 1500
+      },
+      "destination_id": "BUY-002",
+      "id": "PLAN-46a6bc525ab6",
+      "policy_version": "demo-policy-v1",
+      "status": "invalidated"
+    },
+    {
+      "case_id": "RET-002",
+      "case_version": 2,
+      "data": {
+        "estimated_saving_cents": 400,
+        "evidence": {
+          "case_version": 2,
+          "condition": "opened",
+          "direct_forwarding": false,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-003",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "An opened item must undergo inspection before resale. A broken seal blocks forwarding to a waiting buyer, even if the original return form said sealed.",
+              "title": "Opened items"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "route": {
+          "cost": {
+            "handling_fee_cents": 400,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 700,
+            "total_cents": 1100,
+            "transit_hours": 24
+          },
+          "destination_id": "dest-inspection",
+          "eligible": true,
+          "name": "Sample inspection center",
+          "reason": null,
+          "source_url": null,
+          "type": "inspection"
+        },
+        "simulated": true,
+        "warehouse_cost_cents": 1500
+      },
+      "destination_id": "dest-inspection",
+      "id": "PLAN-def08d1a2c40",
+      "policy_version": "demo-policy-v1",
+      "status": "pending"
+    },
+    {
+      "case_id": "RET-eeaa1aecca77",
+      "case_version": 1,
+      "data": {
+        "estimated_saving_cents": 0,
+        "evidence": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "demo fixture lookup \u2014 not Moss execution",
+          "passages": [
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            },
+            {
+              "id": "POL-007",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+              "title": "Approval and current facts"
+            },
+            {
+              "id": "POL-008",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+              "title": "Reservation limits"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "route": {
+          "cost": {
+            "handling_fee_cents": 300,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 1200,
+            "total_cents": 1500,
+            "transit_hours": 48
+          },
+          "destination_id": "dest-warehouse",
+          "eligible": true,
+          "name": "Sample merchant warehouse",
+          "reason": null,
+          "source_url": null,
+          "type": "warehouse"
+        },
+        "simulated": true,
+        "warehouse_cost_cents": 1500
+      },
+      "destination_id": "dest-warehouse",
+      "id": "PLAN-5e90889a48de",
+      "policy_version": "demo-policy-v1",
+      "status": "approved"
+    },
+    {
+      "case_id": "RET-115451f05dd0",
+      "case_version": 1,
+      "data": {
+        "estimated_saving_cents": 0,
+        "evidence": {
+          "case_version": 1,
+          "condition": "sealed",
+          "direct_forwarding": true,
+          "origin": "live Moss retrieval",
+          "passages": [
+            {
+              "id": "POL-001",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+              "title": "Return eligibility"
+            },
+            {
+              "id": "POL-002",
+              "merchant_id": "merchant-demo-01",
+              "policy_version": "demo-policy-v1",
+              "source_file": "policies/return-policy.md",
+              "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+              "title": "Direct forwarding"
+            }
+          ],
+          "policy_version": "demo-policy-v1"
+        },
+        "route": {
+          "cost": {
+            "handling_fee_cents": 300,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 1200,
+            "total_cents": 1500,
+            "transit_hours": 48
+          },
+          "destination_id": "dest-warehouse",
+          "eligible": true,
+          "name": "Sample merchant warehouse",
+          "reason": null,
+          "source_url": null,
+          "type": "warehouse"
+        },
+        "simulated": true,
+        "warehouse_cost_cents": 1500
+      },
+      "destination_id": "dest-warehouse",
+      "id": "PLAN-3f342b2861b6",
+      "policy_version": "demo-policy-v1",
+      "status": "pending"
+    }
+  ],
+  "shipments": [
+    {
+      "approval_key": "approve-PLAN-8013e0503fbd",
+      "case_id": "RET-001",
+      "data": {
+        "estimated_saving_cents": 900,
+        "route": {
+          "conditional": true,
+          "cost": {
+            "handling_fee_cents": 100,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 500,
+            "total_cents": 600,
+            "transit_hours": 24
+          },
+          "destination_id": "BUY-001",
+          "eligible": true,
+          "name": "Sample Buyer A",
+          "reason": null,
+          "type": "buyer"
+        },
+        "status": "simulated"
+      },
+      "id": "SHIP-362fc9d37cf8",
+      "proposal_id": "PLAN-8013e0503fbd"
+    },
+    {
+      "approval_key": "http-RET-eeaa1aecca77",
+      "case_id": "RET-eeaa1aecca77",
+      "data": {
+        "estimated_saving_cents": 0,
+        "route": {
+          "cost": {
+            "handling_fee_cents": 300,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 1200,
+            "total_cents": 1500,
+            "transit_hours": 48
+          },
+          "destination_id": "dest-warehouse",
+          "eligible": true,
+          "name": "Sample merchant warehouse",
+          "reason": null,
+          "source_url": null,
+          "type": "warehouse"
+        },
+        "status": "simulated"
+      },
+      "id": "SHIP-1ac7c5bfa112",
+      "proposal_id": "PLAN-5e90889a48de"
+    }
+  ],
+  "tool_results": [
+    {
+      "data": {
+        "facts": {
+          "band_room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+          "customer_alias": "Demo returner",
+          "elapsed_since_purchase_days": 10,
+          "inspection_condition": null,
+          "merchant_id": "merchant-demo-01",
+          "origin_zone_id": "zone-oakland",
+          "reason": "Not needed",
+          "reported_condition": "sealed",
+          "sku": "LAMP-01"
+        },
+        "id": "RET-115451f05dd0",
+        "status": "working",
+        "version": 1
+      },
+      "request_key": "zoo-tool-ctc_01M41Z9R8EE0QQY7MAKQD4VPHC"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "51c8401c-ef39-4908-860c-31ca8aa74aff",
+          "recipients": [
+            {
+              "handle": "nmsharma/policy",
+              "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+              "name": "Policy"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41Z9XDNTR4MXGB1ZQR4SVCA"
+    },
+    {
+      "data": {
+        "facts": {
+          "band_room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+          "customer_alias": "Demo returner",
+          "elapsed_since_purchase_days": 10,
+          "handoffs": 1,
+          "inspection_condition": null,
+          "merchant_id": "merchant-demo-01",
+          "origin_zone_id": "zone-oakland",
+          "reason": "Not needed",
+          "reported_condition": "sealed",
+          "sku": "LAMP-01"
+        },
+        "id": "RET-115451f05dd0",
+        "status": "working",
+        "version": 1
+      },
+      "request_key": "zoo-tool-ctc_01M41ZA425WPWB71VS6MX9Y8RS"
+    },
+    {
+      "data": {
+        "latency_ms": 0,
+        "passages": [
+          {
+            "id": "POL-001",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+            "title": "Return eligibility"
+          },
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          },
+          {
+            "id": "POL-003",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "An opened item must undergo inspection before resale. A broken seal blocks forwarding to a waiting buyer, even if the original return form said sealed.",
+            "title": "Opened items"
+          },
+          {
+            "id": "POL-005",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "If condition is unknown or contradictory, do not assume it is sealed. Request evidence or inspection before resale.",
+            "title": "Uncertain condition"
+          },
+          {
+            "id": "POL-008",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+            "title": "Reservation limits"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "request_key": "zoo-tool-ctc_01M41ZA43004JKXZPC3YJCV051"
+    },
+    {
+      "data": {
+        "latency_ms": 1,
+        "passages": [
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          },
+          {
+            "id": "POL-004",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A damaged item must not go directly to a waiting buyer. Route it to an approved inspection or warehouse destination, or a merchant-verified repair business.",
+            "title": "Damaged items"
+          },
+          {
+            "id": "POL-006",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A search result is only a candidate. The merchant must verify acceptance and costs before an external business becomes an actionable destination.",
+            "title": "External destinations"
+          },
+          {
+            "id": "POL-007",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "Approval applies only to the current case and policy version. New inspection facts or a policy change require a fresh review and approval.",
+            "title": "Approval and current facts"
+          },
+          {
+            "id": "POL-008",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A returned item and a waiting order may each have only one active reservation. An expired reservation cannot support an approved shipment.",
+            "title": "Reservation limits"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "request_key": "zoo-tool-ctc_01M41ZAHGMFEJ469PX3YCRYA4B"
+    },
+    {
+      "data": {
+        "case_version": 1,
+        "condition": "sealed",
+        "direct_forwarding": true,
+        "origin": "live Moss retrieval",
+        "passages": [
+          {
+            "id": "POL-001",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+            "title": "Return eligibility"
+          },
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "request_key": "zoo-tool-ctc_01M41ZAWQZ5M9X2C56V2SBP9BH"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "821204b1-1943-44a6-816c-5a5eab5c6d96",
+          "recipients": [
+            {
+              "handle": "nmsharma/returns",
+              "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+              "name": "Returns"
+            },
+            {
+              "handle": "nmsharma/fulfillment",
+              "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+              "name": "Fulfillment"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZB5XE799JEAP8H5PXEZVF"
+    },
+    {
+      "data": [],
+      "request_key": "zoo-tool-ctc_01M41ZBE2VCJPE4AVEH1DQQNHN"
+    },
+    {
+      "data": {
+        "facts": {
+          "band_room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+          "customer_alias": "Demo returner",
+          "elapsed_since_purchase_days": 10,
+          "finding": {
+            "case_version": 1,
+            "condition": "sealed",
+            "direct_forwarding": true,
+            "origin": "live Moss retrieval",
+            "passages": [
+              {
+                "id": "POL-001",
+                "merchant_id": "merchant-demo-01",
+                "policy_version": "demo-policy-v1",
+                "source_file": "policies/return-policy.md",
+                "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+                "title": "Return eligibility"
+              },
+              {
+                "id": "POL-002",
+                "merchant_id": "merchant-demo-01",
+                "policy_version": "demo-policy-v1",
+                "source_file": "policies/return-policy.md",
+                "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+                "title": "Direct forwarding"
+              }
+            ],
+            "policy_version": "demo-policy-v1"
+          },
+          "handoffs": 2,
+          "inspection_condition": null,
+          "merchant_id": "merchant-demo-01",
+          "origin_zone_id": "zone-oakland",
+          "policy_case_version": 1,
+          "policy_passage_ids": [
+            "POL-004",
+            "POL-005",
+            "POL-006",
+            "POL-001",
+            "POL-007",
+            "POL-002",
+            "POL-003",
+            "POL-008"
+          ],
+          "policy_retrieval_provider": "moss",
+          "reason": "Not needed",
+          "reported_condition": "sealed",
+          "retrieval_policy_version": "demo-policy-v1",
+          "sku": "LAMP-01"
+        },
+        "id": "RET-115451f05dd0",
+        "status": "working",
+        "version": 1
+      },
+      "request_key": "zoo-tool-ctc_01M41ZBE322F2A6S7J114WT9JM"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "c6a38808-ca0c-44df-8e9a-94a07efb4dbf",
+          "recipients": [
+            {
+              "handle": "nmsharma/fulfillment",
+              "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+              "name": "Fulfillment"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZBENYJ89NM10W55SR85E4"
+    },
+    {
+      "data": [
+        {
+          "cost": {
+            "handling_fee_cents": 300,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 1200,
+            "total_cents": 1500,
+            "transit_hours": 48
+          },
+          "destination_id": "dest-warehouse",
+          "eligible": true,
+          "name": "Sample merchant warehouse",
+          "reason": null,
+          "source_url": null,
+          "type": "warehouse"
+        },
+        {
+          "conditional": true,
+          "cost": {
+            "handling_fee_cents": 100,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 500,
+            "total_cents": 600,
+            "transit_hours": 24
+          },
+          "destination_id": "BUY-001",
+          "eligible": false,
+          "name": "Sample Buyer A",
+          "reason": "Buyer order already fulfilled.",
+          "type": "buyer"
+        },
+        {
+          "cost": {
+            "handling_fee_cents": 400,
+            "quote_source": "synthetic_fixed_table",
+            "shipping_cost_cents": 700,
+            "total_cents": 1100,
+            "transit_hours": 24
+          },
+          "destination_id": "dest-inspection",
+          "eligible": false,
+          "name": "Sample inspection center",
+          "reason": "Sealed items are not accepted here.",
+          "source_url": null,
+          "type": "inspection"
+        }
+      ],
+      "request_key": "zoo-tool-ctc_01M41ZBKF3FPMY8VSBDQP1KFXH"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "a8132f8a-2106-4088-be1a-a2fa3e006002",
+          "recipients": [
+            {
+              "handle": "nmsharma/returns",
+              "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+              "name": "Returns"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZBZVCZ6BT5EGKH7J59ZWP"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZCAFD6DDNPX547DT0DK88"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "74232e16-7e53-42b4-8b94-ed405922b3d2",
+          "recipients": [
+            {
+              "handle": "nmsharma/returns",
+              "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+              "name": "Returns"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZCF2JQGQ8G7WMMHDEB4CY"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZCNGQ2Q7VYYQ9Y93ABYSD"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "c4f07e4f-37b2-4830-a97d-0b82e4a1103e",
+          "recipients": [
+            {
+              "handle": "nmsharma/fulfillment",
+              "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+              "name": "Fulfillment"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZCZ14D8N8YKFG5HBV0JGZ"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "e08ccf12-52c8-4027-8934-2ed8f3b87752",
+          "recipients": [
+            {
+              "handle": "nmsharma/returns",
+              "id": "e8cf9824-eff5-48c7-872a-58d3c0446cf1",
+              "name": "Returns"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZD5MGJAHPZHTTATQBJ3SV"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZDFNQSVQ97TY1GJPE0VQ3"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZDJQ0Q49GWRVVFMAHVB1C"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZDQ7CR40XK6WDE58YJHFS"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZEM673W9XXE1JTXP8QD90"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZEQKK2262BG882SVVD5PK"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZEV7JRHJJYQK6XJ2CAF7H"
+    },
+    {
+      "data": {
+        "error": "Destination is not eligible."
+      },
+      "request_key": "zoo-tool-ctc_01M41ZF8Q8C25MM46FCC9CVJFX"
+    },
+    {
+      "data": {
+        "ok": true,
+        "receipt": {
+          "id": "b0cd26be-cc95-4c64-9881-10aa7ff9d3fb",
+          "recipients": [
+            {
+              "handle": "nmsharma/fulfillment",
+              "id": "2847b062-adf1-4185-9726-102330ebd3bd",
+              "name": "Fulfillment"
+            },
+            {
+              "handle": "nmsharma/policy",
+              "id": "9537c5b0-e3c4-4cda-8bf2-4023bcec1251",
+              "name": "Policy"
+            }
+          ],
+          "success": true
+        }
+      },
+      "request_key": "zoo-tool-ctc_01M41ZFKKZH3WGJ6GKHR36S6DA"
+    },
+    {
+      "data": {
+        "case_id": "RET-115451f05dd0",
+        "case_version": 1,
+        "data": {
+          "estimated_saving_cents": 0,
+          "evidence": {
+            "case_version": 1,
+            "condition": "sealed",
+            "direct_forwarding": true,
+            "origin": "live Moss retrieval",
+            "passages": [
+              {
+                "id": "POL-001",
+                "merchant_id": "merchant-demo-01",
+                "policy_version": "demo-policy-v1",
+                "source_file": "policies/return-policy.md",
+                "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+                "title": "Return eligibility"
+              },
+              {
+                "id": "POL-002",
+                "merchant_id": "merchant-demo-01",
+                "policy_version": "demo-policy-v1",
+                "source_file": "policies/return-policy.md",
+                "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+                "title": "Direct forwarding"
+              }
+            ],
+            "policy_version": "demo-policy-v1"
+          },
+          "route": {
+            "cost": {
+              "handling_fee_cents": 300,
+              "quote_source": "synthetic_fixed_table",
+              "shipping_cost_cents": 1200,
+              "total_cents": 1500,
+              "transit_hours": 48
+            },
+            "destination_id": "dest-warehouse",
+            "eligible": true,
+            "name": "Sample merchant warehouse",
+            "reason": null,
+            "source_url": null,
+            "type": "warehouse"
+          },
+          "simulated": true,
+          "warehouse_cost_cents": 1500
+        },
+        "destination_id": "dest-warehouse",
+        "id": "PLAN-3f342b2861b6",
+        "policy_version": "demo-policy-v1",
+        "status": "pending"
+      },
+      "request_key": "zoo-tool-ctc_01M41ZFYMZDRJR3X2QEV20YP5J"
+    }
+  ]
+}

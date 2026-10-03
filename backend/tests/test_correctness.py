@@ -467,7 +467,9 @@ def test_recovery_resumes_original_delivery_id(monkeypatch):
     processed = []
     received = []
     msg = SimpleNamespace(id='original-message', sender_id='f', sender_name='Fulfillment', content=json.dumps({'case_id':'RET-001','version':1}), metadata={'delivery_status':{'r':{'status':'failed'}}})
+    msg.metadata = SimpleNamespace(model_dump=lambda: {'delivery_status':{'r':{'status':'failed'}}})
     async def listing(*args, **kwargs):
+        assert kwargs['status'] == 'all'
         return SimpleNamespace(data=[msg], metadata=SimpleNamespace(has_more=False))
     async def marking(room, msg_id, **kwargs): processed.append(msg_id)
     class Tools:
@@ -515,3 +517,168 @@ def test_uncertain_handoff_stays_pending_until_receipt(monkeypatch):
     asyncio.run(bridge.resolve('returns','RET-001',1,'original-call','band_send_message',args,tools))
     assert len(resolutions) == 2
     assert resolutions[0]['content'][0]['value']['receipt']['id'] == 'original-band-message'
+
+
+def test_zoo_input_ack_reconciles_without_reposting(monkeypatch):
+    import asyncio, json
+    from types import SimpleNamespace
+    import app.bridge as module
+    from zoowork.events import normalize_event
+    bridge = module.LiveBridge.__new__(module.LiveBridge)
+    bridge.zoo_ids = {'returns':'zoo-r'}
+    msg=SimpleNamespace(id='original', sender_id='f', sender_name='Fulfillment', room_id='room', content='original-content')
+    context={'trusted_case_id':'RET-001','expected_version':1,'band_message_id':msg.id,'sender_id':msg.sender_id,'message':msg.content}
+    history=[{'seq':9,'entry':{'message':{'role':'user','content':[{'type':'text','text':json.dumps(context)}]}}}]
+    posts=[]
+    async def session(*args,**kwargs): return {'history':history}
+    async def post(*args,**kwargs): posts.append(args); raise AssertionError('Never repost accepted input')
+    async def pending(*args,**kwargs): return []
+    async def events(*args,**kwargs): return [normalize_event({'seq':10,'event_type':'run.finished','payload':{'status':'succeeded'}})]
+    bridge.zoo=SimpleNamespace(get_session=session,post_events=post,list_custom_tool_calls=pending,list_events=events)
+    with transaction() as c:
+        case=case_locked(c,'RET-001'); case['data']['band_room_id']='room'
+        c.execute("UPDATE return_cases SET data=%s WHERE id='RET-001'",(Jsonb(case['data']),))
+    module.save_session(case['id'],'returns',{'session_id':'existing-session','agent_id':'zoo-r','room_id':'room','after':0,'active_message':'original','version':1,'posted':False})
+    module.save_call('band-delivery-returns-original','band','posting',{'case_id':case['id']})
+    tools=SimpleNamespace(room_id='room',participants=[])
+    asyncio.run(bridge.run_role('returns',msg,tools,[],case))
+    asyncio.run(bridge.run_role('returns',msg,tools,[],case))
+    assert posts==[]
+    with transaction() as c:
+        d=c.execute("SELECT data FROM agent_sessions WHERE case_id='RET-001' AND role='returns'").fetchone()['data']
+        assert d['session_id']=='existing-session' and d['input_receipt']['history_seq']==9
+        assert 'active_message' not in d
+        assert c.execute("SELECT status FROM provider_calls WHERE request_key='band-delivery-returns-original'").fetchone()['status']=='done'
+        assert c.execute('SELECT count(*) AS n FROM shipments').fetchone()['n']==0
+
+
+def test_zoo_missing_or_duplicate_input_requires_evidence(monkeypatch):
+    import asyncio,json
+    from types import SimpleNamespace
+    import app.bridge as module
+    bridge=module.LiveBridge.__new__(module.LiveBridge); bridge.zoo_ids={'returns':'zoo-r'}
+    msg=SimpleNamespace(id='original',sender_id='f',content='original-content')
+    data={'session_id':'existing','version':1}; case={'id':'RET-001'}
+    context={'trusted_case_id':'RET-001','expected_version':1,'band_message_id':'original','sender_id':'f','message':'original-content'}
+    row={'seq':1,'entry':{'message':{'role':'user','content':json.dumps(context)}}}
+    history=[]
+    async def session(*args,**kwargs): return {'history':history}
+    bridge.zoo=SimpleNamespace(get_session=session)
+    assert asyncio.run(bridge.input_receipt('returns',data,case,msg)) is None
+    history.extend([row,row])
+    with pytest.raises(Conflict,match='Duplicate ZooWork input'):
+        asyncio.run(bridge.input_receipt('returns',data,case,msg))
+    history.pop(); context['expected_version']=2; history[0]['entry']['message']['content']=json.dumps(context)
+    assert asyncio.run(bridge.input_receipt('returns',data,case,msg)) is None
+
+
+def test_invalid_band_ack_does_not_resolve_or_repeat(monkeypatch):
+    import asyncio
+    from types import SimpleNamespace
+    import app.bridge as module
+    bridge=module.LiveBridge.__new__(module.LiveBridge); bridge.band_ids={'returns':'r','policy':'p','fulfillment':'f'}; bridge.zoo_ids={'returns':'z'}
+    sends=[]; resolutions=[]
+    async def send(*args): sends.append(args); return 'network failure'
+    async def resolved(*args,**kwargs): resolutions.append(args)
+    async def absent(*args): return None
+    bridge.zoo=SimpleNamespace(resolve_custom_tool_call=resolved)
+    monkeypatch.setattr(bridge,'initiation_receipt',absent)
+    tools=SimpleNamespace(room_id='room',participants=[{'id':'p'}],execute_tool_call=send)
+    with transaction() as c:
+        case=case_locked(c,'RET-001'); case['data']['band_room_id']='room'
+        c.execute("UPDATE return_cases SET data=%s WHERE id='RET-001'",(Jsonb(case['data']),))
+    for _ in range(2):
+        with pytest.raises(Conflict,match='no automatic resend'):
+            asyncio.run(bridge.resolve('returns','RET-001',1,'uncertain','band_send_message',{'mentions':['p'],'content':'review'},tools))
+    assert len(sends)==1 and not resolutions
+    with transaction() as c:
+        assert case_locked(c,'RET-001')['data']['handoffs']==1
+        assert not c.execute("SELECT 1 FROM tool_results WHERE request_key='zoo-tool-uncertain'").fetchone()
+
+
+def test_band_receipt_recovery_at_handoff_limit(monkeypatch):
+    import asyncio
+    from types import SimpleNamespace
+    import app.bridge as module
+    with transaction() as c:
+        case=case_locked(c,'RET-001'); case['data'].update(band_room_id='room',handoffs=8)
+        c.execute("UPDATE return_cases SET data=%s WHERE id='RET-001'",(Jsonb(case['data']),))
+    module.save_call('zoo-tool-last','band','pending',{'case_id':'RET-001','has_message_marker':True})
+    bridge=module.LiveBridge.__new__(module.LiveBridge); bridge.band_ids={'returns':'r','policy':'p','fulfillment':'f'}; bridge.zoo_ids={'returns':'z'}
+    resolutions=[]
+    async def resolved(*args,**kwargs): resolutions.append(kwargs)
+    async def found(*args): return {'id':'original'}
+    bridge.zoo=SimpleNamespace(resolve_custom_tool_call=resolved)
+    monkeypatch.setattr(bridge,'initiation_receipt',found)
+    asyncio.run(bridge.resolve('returns','RET-001',1,'last','band_send_message',{'mentions':['p'],'content':'review'},SimpleNamespace(room_id='room',participants=[{'id':'p'}])))
+    assert resolutions[0]['content'][0]['value']['receipt']['id']=='original'
+    with transaction() as c: assert case_locked(c,'RET-001')['data']['handoffs']==8
+
+
+def test_sealed_case_cannot_queue_unused_repair_research():
+    cl=client()
+    assert cl.post('/api/returns/RET-001/research',json={'expected_version':1}).status_code==409
+    with transaction() as c:
+        assert not c.execute("SELECT 1 FROM jobs WHERE case_id='RET-001' AND type='research'").fetchone()
+        assert case_locked(c,'RET-001')['version']==1
+
+
+def test_terminal_cursor_restart_finishes_original_delivery(monkeypatch):
+    import asyncio
+    from types import SimpleNamespace
+    import app.bridge as module
+    bridge=module.LiveBridge.__new__(module.LiveBridge); bridge.zoo_ids={'returns':'z'}
+    bridge.zoo=SimpleNamespace()  # No provider call should be necessary.
+    with transaction() as c:
+        case=case_locked(c,'RET-001'); case['data']['band_room_id']='room'
+        c.execute("UPDATE return_cases SET data=%s WHERE id='RET-001'",(Jsonb(case['data']),))
+    module.save_session('RET-001','returns',{'session_id':'original-session','version':1,'room_id':'room','active_message':'original','posted':True,'after':10,'run_finished':True})
+    module.save_call('band-delivery-returns-original','band','running',{'case_id':'RET-001'})
+    asyncio.run(bridge.run_role('returns',SimpleNamespace(id='original',sender_id='f'),SimpleNamespace(room_id='room'),[],case))
+    with transaction() as c:
+        assert c.execute("SELECT status FROM provider_calls WHERE request_key='band-delivery-returns-original'").fetchone()['status']=='done'
+        assert c.execute('SELECT count(*) AS n FROM shipments').fetchone()['n']==0
+
+
+def test_band_callback_and_history_mentions_share_envelope():
+    from app.bridge import band_envelope,band_tokens
+    tokens=band_tokens(['r','p'],[{'id':'p','handle':'merchant/policy'},{'id':'outsider','handle':'other/policy'}])
+    body='{"case_id":"RET-001","version":1,"request_key":"original"}'
+    assert band_envelope('@merchant/policy '+body,tokens)==band_envelope('@[[p]] '+body,tokens)
+    with pytest.raises(ValueError): band_envelope('@other/policy '+body,tokens)
+
+
+def test_ambiguous_zoo_input_missing_from_history_never_reposts():
+    import asyncio
+    from types import SimpleNamespace
+    import app.bridge as module
+    bridge=module.LiveBridge.__new__(module.LiveBridge); bridge.zoo_ids={'returns':'z'}
+    async def session(*args,**kwargs): return {'history':[]}
+    bridge.zoo=SimpleNamespace(get_session=session)  # No post or new session API exists.
+    with transaction() as c:
+        case=case_locked(c,'RET-001'); case['data']['band_room_id']='room'
+        c.execute("UPDATE return_cases SET data=%s WHERE id='RET-001'",(Jsonb(case['data']),))
+    module.save_session('RET-001','returns',{'session_id':'original-session','version':1,'room_id':'room','active_message':'original','posted':False,'after':0})
+    module.save_call('band-delivery-returns-original','band','posting',{'case_id':'RET-001'})
+    with pytest.raises(Conflict,match='External session evidence is required'):
+        asyncio.run(bridge.run_role('returns',SimpleNamespace(id='original',sender_id='f',content='original'),SimpleNamespace(room_id='room'),[],case))
+    with transaction() as c:
+        assert c.execute("SELECT status FROM provider_calls WHERE request_key='band-delivery-returns-original'").fetchone()['status']=='posting'
+        assert c.execute('SELECT count(*) AS n FROM shipments').fetchone()['n']==0
+
+
+def test_band_receipt_pagination_and_json_safe_dates():
+    import asyncio,json
+    from types import SimpleNamespace
+    import app.bridge as module
+    key='original-handoff'; cursors=[]
+    item={'id':'original-message','sender_id':'r','content':json.dumps({'case_id':'RET-001','version':1,'request_key':key}),'inserted_at':datetime.now(timezone.utc)}
+    async def history(**kwargs):
+        cursors.append(kwargs['cursor'])
+        return SimpleNamespace(data=[] if kwargs['cursor'] is None else [SimpleNamespace(model_dump=lambda:item)],metadata=SimpleNamespace(has_more=kwargs['cursor'] is None,next_cursor='second-page'))
+    bridge=module.LiveBridge.__new__(module.LiveBridge); bridge.band_ids={'returns':'r'}
+    bridge.rest={'returns':SimpleNamespace(agent_api_context=SimpleNamespace(get_agent_chat_context=history))}
+    receipt=asyncio.run(bridge.initiation_receipt('room',key,{'case_id':'RET-001','version':1,'type':'handoff'},'returns'))
+    assert receipt['id']=='original-message' and isinstance(receipt['inserted_at'],str)
+    assert cursors==[None,'second-page']
+    module.save_call(key,'band','sent',{'receipt':receipt})

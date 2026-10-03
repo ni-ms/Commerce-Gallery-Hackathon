@@ -1,0 +1,222 @@
+[
+  {
+    "duration": 16,
+    "title": "The merchant workspace",
+    "narration": "Let's walk through Smarter Returns. This is the working merchant app. We'll send a sealed return to an eligible buyer, then see how a broken seal changes the decision. The walkthrough uses synthetic demo data and simulated shipping.",
+    "shots": [
+      [
+        "01-workspace",
+        16
+      ]
+    ]
+  },
+  {
+    "duration": 26,
+    "title": "Start a return review",
+    "narration": "Here's a reading lamp that the customer says is unopened. I start the review. The app checks the policy and available destinations, then recommends Sample Buyer A at six dollars. Opening the cost breakdown shows five dollars for shipping and one dollar for handling. The warehouse estimate is fifteen dollars, giving us nine dollars in potential estimated savings.",
+    "shots": [
+      [
+        "01-workspace",
+        4,
+        [
+          904,
+          653
+        ]
+      ],
+      [
+        "02-review-started",
+        2
+      ],
+      [
+        "04-buyer-proposal",
+        10,
+        [
+          736,
+          475
+        ]
+      ],
+      [
+        "05-costs",
+        10
+      ]
+    ]
+  },
+  {
+    "duration": 24,
+    "title": "Confirm condition and approve",
+    "narration": "The route comparison shows which destinations qualify. The buyer is eligible, while the inspection center doesn't accept this sealed item. Approval stays disabled until I confirm the condition. I check that the lamp is sealed, then approve. The app saves one simulated shipment and marks the route approved. It also marks the buyer's order fulfilled, so another return can't claim it.",
+    "shots": [
+      [
+        "06-alternatives",
+        11,
+        [
+          623,
+          260
+        ]
+      ],
+      [
+        "07-sealed-confirmed",
+        4,
+        [
+          743,
+          318
+        ]
+      ],
+      [
+        "08-approval-submitted",
+        2
+      ],
+      [
+        "09-approved",
+        7
+      ]
+    ]
+  },
+  {
+    "duration": 25,
+    "title": "Inspect the second return",
+    "narration": "Now let's review this desk lamp. The customer reported a sealed box, and the first recommendation is another buyer route, this time for eight dollars. But reported condition isn't the same as a merchant inspection. I open Item condition, then Check item condition. This form lets the merchant record what they actually found, with an optional note or photos.",
+    "shots": [
+      [
+        "10-second-return",
+        3
+      ],
+      [
+        "11-second-review",
+        2
+      ],
+      [
+        "12-eight-dollar-proposal",
+        7,
+        [
+          735,
+          210
+        ]
+      ],
+      [
+        "13-condition-expanded",
+        3
+      ],
+      [
+        "14-condition-modal",
+        10,
+        [
+          640,
+          291
+        ]
+      ]
+    ]
+  },
+  {
+    "duration": 28,
+    "title": "A broken seal triggers a fresh review",
+    "narration": "I change the condition to Opened and enter: Seal is broken. I also confirm that this reflects my inspection. When I save, the earlier buyer plan disappears and a fresh review begins. The new recommendation is the inspection center at eleven dollars. This route still needs a separate approval. The system never lets the earlier, cheaper quote override the new condition.",
+    "shots": [
+      [
+        "15-opened-selected",
+        4,
+        [
+          640,
+          380
+        ]
+      ],
+      [
+        "16-note-typing",
+        1
+      ],
+      [
+        "17-inspection-note",
+        5,
+        [
+          409,
+          535
+        ]
+      ],
+      [
+        "18-condition-confirmed",
+        3,
+        [
+          503,
+          575
+        ]
+      ],
+      [
+        "19-condition-saved",
+        2
+      ],
+      [
+        "20-reviewing-opened",
+        2
+      ],
+      [
+        "21-inspection-proposal",
+        11
+      ]
+    ]
+  },
+  {
+    "duration": 26,
+    "title": "See why the recommendation changed",
+    "narration": "The alternatives make the restriction visible: the eight dollar buyer route is now blocked, even though it's cheaper. The policy says an opened item needs inspection before resale. And the activity history records the change in case version, the released reservation, and the blocked old approval. The merchant can see both the current recommendation and the reason it changed.",
+    "shots": [
+      [
+        "22-blocked-buyer",
+        6
+      ],
+      [
+        "23-policy-evidence",
+        3
+      ],
+      [
+        "24-opened-policy",
+        8
+      ],
+      [
+        "25-audit-trail",
+        3
+      ],
+      [
+        "36-audit-wide",
+        6
+      ]
+    ]
+  },
+  {
+    "duration": 25,
+    "title": "Saved evidence from a live provider review",
+    "narration": "Those interactive examples used demo mode. Here I'm switching to a saved live review. ZooWork role sessions coordinated through Band, and Moss retrieved policy evidence. The app exposes the saved provider receipts, including this successful Moss query and its policy passages. This particular case recommends the warehouse at fifteen dollars and still awaits merchant approval. No shipment has been created for it.",
+    "shots": [
+      [
+        "26-live-recommendation",
+        7
+      ],
+      [
+        "27-live-evidence-expanded",
+        3
+      ],
+      [
+        "28-provider-receipts",
+        5
+      ],
+      [
+        "29-moss-receipt",
+        6
+      ],
+      [
+        "31-live-overview",
+        4
+      ]
+    ]
+  },
+  {
+    "duration": 10,
+    "title": "A reviewable decision, with merchant approval",
+    "narration": "That's the demo: compare eligible routes, update the plan when facts change, and keep the merchant in control. Real carrier integrations come next.",
+    "shots": [
+      [
+        "31-live-overview",
+        10
+      ]
+    ]
+  }
+]

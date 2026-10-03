@@ -27,7 +27,7 @@ async def main():
                 if stream=='context':
                     response=await rest.agent_api_context.get_agent_chat_context(chat_id=audit['room_id'],cursor=cursor,request_options={'max_retries':0})
                 else:
-                    response=await rest.agent_api_messages.list_agent_messages(audit['room_id'],cursor=cursor,limit=100,request_options={'max_retries':0})
+                    response=await rest.agent_api_messages.list_agent_messages(audit['room_id'],status='all',cursor=cursor,limit=100,request_options={'max_retries':0})
                 pages+=1
                 for msg in response.data or []:
                     item=msg.model_dump(mode='json'); messages.append(item)

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "01-workspace",
+    "time": 1791070605169
+  },
+  {
+    "name": "02-review-started",
+    "time": 1791070605469
+  },
+  {
+    "name": "03-review-progress",
+    "time": 1791070607494
+  },
+  {
+    "name": "04-buyer-proposal",
+    "time": 1791070611215
+  },
+  {
+    "name": "05-costs",
+    "time": 1791070611749
+  },
+  {
+    "name": "06-alternatives",
+    "time": 1791070616292
+  },
+  {
+    "name": "07-sealed-confirmed",
+    "time": 1791070626887
+  },
+  {
+    "name": "08-approval-submitted",
+    "time": 1791070627184
+  },
+  {
+    "name": "09-approved",
+    "time": 1791070630861
+  },
+  {
+    "name": "10-second-return",
+    "time": 1791070640936
+  },
+  {
+    "name": "11-second-review",
+    "time": 1791070641222
+  },
+  {
+    "name": "12-eight-dollar-proposal",
+    "time": 1791070644164
+  },
+  {
+    "name": "13-condition-expanded",
+    "time": 1791070644674
+  },
+  {
+    "name": "14-condition-modal",
+    "time": 1791070647614
+  },
+  {
+    "name": "15-opened-selected",
+    "time": 1791070662989
+  },
+  {
+    "name": "16-note-typing",
+    "time": 1791070663141
+  },
+  {
+    "name": "17-inspection-note",
+    "time": 1791070663292
+  },
+  {
+    "name": "18-condition-confirmed",
+    "time": 1791070663695
+  },
+  {
+    "name": "19-condition-saved",
+    "time": 1791070666626
+  },
+  {
+    "name": "20-reviewing-opened",
+    "time": 1791070669209
+  },
+  {
+    "name": "21-inspection-proposal",
+    "time": 1791070672795
+  },
+  {
+    "name": "22-blocked-buyer",
+    "time": 1791070673296
+  },
+  {
+    "name": "23-policy-evidence",
+    "time": 1791070673801
+  },
+  {
+    "name": "24-opened-policy",
+    "time": 1791070677835
+  },
+  {
+    "name": "25-audit-trail",
+    "time": 1791070678239
+  }
+]

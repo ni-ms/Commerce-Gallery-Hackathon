@@ -1,0 +1,4 @@
+{"type": "SentenceBoundary", "offset": 500000, "duration": 23000000, "text": "Let's walk through Smarter Returns."}
+{"type": "SentenceBoundary", "offset": 23500000, "duration": 18000000, "text": "This is the working merchant app."}
+{"type": "SentenceBoundary", "offset": 41500000, "duration": 59875000, "text": "We'll send a sealed return to an eligible buyer, then see how a broken seal changes the decision."}
+{"type": "SentenceBoundary", "offset": 101375000, "duration": 42250000, "text": "The walkthrough uses synthetic demo data and simulated shipping."}

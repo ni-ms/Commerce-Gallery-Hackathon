@@ -1,0 +1,5 @@
+{"type": "SentenceBoundary", "offset": 500000, "duration": 36000000, "text": "Here's a reading lamp that the customer says is unopened."}
+{"type": "SentenceBoundary", "offset": 36500000, "duration": 11750000, "text": "I start the review."}
+{"type": "SentenceBoundary", "offset": 48250000, "duration": 69500000, "text": "The app checks the policy and available destinations, then recommends Sample Buyer A at six dollars."}
+{"type": "SentenceBoundary", "offset": 117750000, "duration": 52000000, "text": "Opening the cost breakdown shows five dollars for shipping and one dollar for handling."}
+{"type": "SentenceBoundary", "offset": 169750000, "duration": 65000000, "text": "The warehouse estimate is fifteen dollars, giving us nine dollars in potential estimated savings."}

@@ -1,0 +1,1 @@
+The problem starts with a simple question: where should this return go next? Sending everything back to a warehouse can miss a cheaper eligible route. But the lowest quote alone is not enough. The system needs to check the item's condition, the merchant's policy, destination acceptance, and whether a buyer is still available.

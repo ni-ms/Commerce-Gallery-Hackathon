@@ -1,0 +1,6 @@
+{"type": "SentenceBoundary", "offset": 500000, "duration": 36174530, "text": "The route comparison shows which destinations qualify."}
+{"type": "SentenceBoundary", "offset": 36674530, "duration": 48702832, "text": "The buyer is eligible, while the inspection center doesn't accept this sealed item."}
+{"type": "SentenceBoundary", "offset": 85377363, "duration": 31485850, "text": "Approval stays disabled until I confirm the condition."}
+{"type": "SentenceBoundary", "offset": 116863213, "duration": 27830190, "text": "I check that the lamp is sealed, then approve."}
+{"type": "SentenceBoundary", "offset": 144693404, "duration": 40566039, "text": "The app saves one simulated shipment and marks the route approved."}
+{"type": "SentenceBoundary", "offset": 185259443, "duration": 45283021, "text": "It also marks the buyer's order fulfilled, so another return can't claim it."}

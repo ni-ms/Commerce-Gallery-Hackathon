@@ -26,10 +26,21 @@ def band_envelope(content, participant_ids):
     # participant tokens at the start; never extract arbitrary embedded JSON.
     while True:
         token = re.match(r"^\s*@\[\[([^\]]+)\]\]\s*", content)
+        if not token:
+            token = re.match(r"^\s*@([A-Za-z0-9_./-]+)\s+", content)
         if not token or token.group(1) not in participant_ids:
             break
         content = content[token.end():]
     return json.loads(content)
+
+
+def band_tokens(ids, participants):
+    configured = set(ids)
+    tokens = set(configured)
+    for participant in participants:
+        if participant.get("id") in configured and participant.get("handle"):
+            tokens.add(participant["handle"].lstrip("@"))
+    return tokens
 
 
 def save_call(key, provider, status, data):
@@ -70,7 +81,7 @@ class ZooWorkBandAdapter(SimpleAdapter):
                     "SELECT * FROM return_cases WHERE data->>'band_room_id'=%s FOR UPDATE",
                     (room_id,),
                 ).fetchone()
-                if case and case["status"] not in ("approved", "exception", "rejected"):
+                if case and case["status"] not in ("approved", "exception", "rejected", "awaiting_approval"):
                     c.execute(
                         "UPDATE return_cases SET status='needs_review' WHERE id=%s", (case["id"],)
                     )
@@ -179,9 +190,11 @@ class LiveBridge:
                 if (isinstance(envelope, dict)
                     and envelope.get("case_id") == job["case_id"]
                     and envelope.get("version") == job["version"]
-                    and (envelope.get("request_key") == key or envelope.get("event") == job["type"])
+                    and (envelope.get("request_key") == key or (job["type"] != "handoff" and envelope.get("event") == job["type"]))
                     and item.get("sender_id") == self.band_ids[initiator]):
-                    return item
+                    # Fern history models include datetime fields. Receipts
+                    # must remain JSON-safe when persisted and returned to ZooWork.
+                    return json.loads(json.dumps(item, default=str))
             if not response.metadata.has_more:
                 return None
             cursor = response.metadata.next_cursor
@@ -201,13 +214,17 @@ class LiveBridge:
     async def _initiate(self, job, key):
         with transaction() as c:
             case = case_locked(c, job["case_id"], job["version"])
-            if case["status"] in ("approved", "exception", "rejected", "awaiting_approval"):
+            if case["status"] in ("approved", "exception", "rejected"):
                 return
             room = case["data"].get("band_room_id")
             saved = c.execute("SELECT * FROM provider_calls WHERE request_key=%s", (key,)).fetchone()
         target = "fulfillment" if job["type"] == "research" else ("policy" if job["version"] > 1 else "returns")
         initiator = "fulfillment" if target == "returns" else "returns"
         state = dict(saved["data"]) if saved else {"case_id": case["id"], "version": case["version"], "phase": "setup"}
+        if saved and saved["status"] == "superseded":
+            return
+        if case["status"] == "awaiting_approval" and not (saved and saved["status"] == "sent"):
+            return
         if saved and saved["status"] == "sent":
             await self.recover_deliveries(case, room)
             return
@@ -279,11 +296,12 @@ class LiveBridge:
             cursor, seen = None, set()
             while True:
                 response = await self.rest[role].agent_api_messages.list_agent_messages(
-                    room, cursor=cursor, limit=100, request_options={"max_retries": 0}
+                    room, status="all", cursor=cursor, limit=100, request_options={"max_retries": 0}
                 )
                 for msg in response.data or []:
-                    delivery = (msg.metadata or {}).get("delivery_status", {}).get(self.band_ids[role], {})
-                    if delivery.get("status") not in ("failed", "processing"):
+                    metadata = msg.metadata.model_dump() if hasattr(msg.metadata, "model_dump") else (msg.metadata or {})
+                    delivery = (metadata.get("delivery_status") or {}).get(self.band_ids[role], {})
+                    if delivery.get("status") not in ("failed", "processing", "delivered", "pending"):
                         continue
                     try:
                         envelope = band_envelope(msg.content, self.band_ids.values())
@@ -323,7 +341,7 @@ class LiveBridge:
         if msg.sender_id not in self.band_ids.values():
             raise Conflict("Sender is not a configured participant.")
         try:
-            envelope = band_envelope(msg.content, self.band_ids.values())
+            envelope = band_envelope(msg.content, band_tokens(self.band_ids.values(), tools.participants))
         except (ValueError, TypeError):
             raise Conflict("Band message must carry the trusted case version.")
         if not isinstance(envelope, dict) or envelope.get("case_id") != row["id"] or envelope.get("version") != row["version"]:
@@ -338,6 +356,51 @@ class LiveBridge:
             await self.run_role(role, msg, tools, participants, row)
 
     async def run_role(self, role, msg, tools, participants, case):
+        # Serialize across processes as well as websocket callbacks. Band's
+        # processing marker alone does not exclude another worker.
+        with transaction() as guard:
+            key = f"role-{case['id']}-{role}"
+            if not guard.execute("SELECT pg_try_advisory_xact_lock(hashtext(%s)) AS acquired", (key,)).fetchone()["acquired"]:
+                raise Conflict("This role is already being recovered; retry its original delivery later.")
+            await self._run_role(role, msg, tools, participants, case)
+
+    async def input_receipt(self, role, data, case, msg):
+        # Session history contains accepted user inputs (the execution event
+        # stream does not). A positive exact match is enough; missing or
+        # compacted history never authorizes a repost.
+        session = await self.zoo.get_session(self.zoo_ids[role], data["session_id"], history=True, limit=500)
+        matches = []
+        for row in session.get("history", []):
+            message = row.get("entry", {}).get("message", {})
+            if message.get("role") != "user":
+                continue
+            content = message.get("content", [])
+            text = content if isinstance(content, str) else "".join(part.get("text", "") for part in content if isinstance(part, dict))
+            try:
+                context = json.loads(text)
+            except (ValueError, TypeError):
+                continue
+            if not isinstance(context, dict):
+                continue
+            tokens = band_tokens(getattr(self, "band_ids", {}).values(), context.get("participants", []))
+            def canonical(content):
+                try:
+                    return band_envelope(content, tokens)
+                except (ValueError, TypeError):
+                    return content
+            if all((
+                context.get("trusted_case_id") == case["id"],
+                context.get("expected_version") == data["version"],
+                context.get("band_message_id") == msg.id,
+                context.get("sender_id") == msg.sender_id,
+                canonical(context.get("message")) == canonical(msg.content),
+            )):
+                matches.append({"history_seq": row.get("seq"), "created_at": row.get("created_at"), "band_message_id": msg.id})
+        if len(matches) > 1:
+            raise Conflict("Duplicate ZooWork input receipts require external session review; no input was repeated.")
+        return matches[0] if matches else None
+
+    async def _run_role(self, role, msg, tools, participants, case):
         delivery_key = f"band-delivery-{role}-{msg.id}"
         with transaction() as c:
             done = c.execute(
@@ -366,6 +429,7 @@ class LiveBridge:
                 "after": 0,
             }
         if not data.get("active_message"):
+            data.pop("run_finished", None)
             data.update(
                 active_message=msg.id,
                 version=case["version"],
@@ -376,15 +440,20 @@ class LiveBridge:
         version = data["version"]
         if not data["posted"]:
             # Save pending before network. An ambiguous response stops rather than blindly reposting.
-            if done and done["status"] == "posting":
-                raise Conflict(
-                    "ZooWork input acknowledgement uncertain; inspect session before retry."
-                )
+            if done and done["status"] in ("posting", "running"):
+                receipt = await self.input_receipt(role, data, case, msg)
+                if not receipt:
+                    raise Conflict("ZooWork input acknowledgement uncertain; accepted input is absent from available session history. External session evidence is required; no input was repeated.")
+                data["posted"] = True
+                data["input_receipt"] = receipt
+                save_session(case["id"], role, data)
+                save_call(delivery_key, "band", "running", {**done["data"], "session_id": data["session_id"], "input_receipt": receipt, "reconciled": True})
+        if not data["posted"]:
             save_call(
                 delivery_key,
                 "band",
                 "posting",
-                {"sender_id": msg.sender_id, "case_id": case["id"], "role": role},
+                {"sender_id": msg.sender_id, "case_id": case["id"], "role": role, "session_id": data["session_id"], "message_id": msg.id, "version": version},
             )
             context = {
                 "trusted_case_id": case["id"],
@@ -396,24 +465,24 @@ class LiveBridge:
                 "message": msg.content,
                 "role_instructions": Path("/app/prompts/" + role + ".md").read_text(),
             }
-            await self.zoo.post_events(
-                self.zoo_ids[role],
-                data["session_id"],
-                [
-                    {
-                        "type": "user.message",
-                        "content": json.dumps(context, default=str),
-                        "idempotency_key": delivery_key,
-                    }
-                ],
-            )
+            try:
+                receipts = await self.zoo.post_events(
+                    self.zoo_ids[role],
+                    data["session_id"],
+                    [{"type": "user.message", "content": json.dumps(context, default=str), "idempotency_key": delivery_key}],
+                )
+                if not receipts or any(not receipt.get("id") or receipt.get("accepted") is not True for receipt in receipts):
+                    raise ValueError("Missing accepted input receipt")
+            except Exception as exc:
+                raise Conflict("ZooWork input acknowledgement uncertain; recovery will check the existing session. No input was repeated.") from exc
             data["posted"] = True
+            data["input_receipt"] = receipts
             save_session(case["id"], role, data)
             save_call(
                 delivery_key,
                 "band",
                 "running",
-                {"case_id": case["id"], "role": role, "sender_id": msg.sender_id},
+                {"case_id": case["id"], "role": role, "sender_id": msg.sender_id, "session_id": data["session_id"], "input_receipt": receipts},
             )
         for _ in range(150):
             with transaction() as c:
@@ -421,17 +490,17 @@ class LiveBridge:
                 if current["version"] != version or current['data'].get('band_room_id')!=tools.room_id:
                     raise Conflict("Older Band delivery cannot change current facts.")
             # Pending REST calls cover a restart between request and event cursor persistence.
-            pending = await self.zoo.list_custom_tool_calls(
+            pending = [] if data.get("run_finished") else await self.zoo.list_custom_tool_calls(
                 self.zoo_ids[role], session_id=data["session_id"], status="pending"
             )
             for call in pending:
                 await self.resolve(
                     role, case["id"], version, call["call_id"], call["name"], call["input"], tools
                 )
-            events = await self.zoo.list_events(
+            events = [] if data.get("run_finished") else await self.zoo.list_events(
                 self.zoo_ids[role], data["session_id"], after=data["after"], limit=100
             )
-            finished = False
+            finished = data.get("run_finished", False)
             for ev in events:
                 call = custom_tool_use(ev)
                 if call and call.phase == "requested":
@@ -439,9 +508,10 @@ class LiveBridge:
                         role, case["id"], version, call.call_id, call.name, call.input or {}, tools
                     )
                 data["after"] = max(data["after"], ev.seq)
-                save_session(case["id"], role, data)
                 if is_run_finished(ev):
                     finished = True
+                    data["run_finished"] = True
+                save_session(case["id"], role, data)
             if finished:
                 data.pop("active_message", None)
                 save_session(case["id"], role, data)
@@ -454,6 +524,7 @@ class LiveBridge:
                         "role": role,
                         "sender_id": msg.sender_id,
                         "session_id": data["session_id"],
+                        "input_receipt": data.get("input_receipt"),
                     },
                 )
                 return
@@ -467,6 +538,12 @@ class LiveBridge:
         return case
 
     async def resolve(self, role, case_id, version, call_id, name, args, tools):
+        with transaction() as guard:
+            if not guard.execute("SELECT pg_try_advisory_xact_lock(hashtext(%s)) AS acquired", ("zoo-tool-" + call_id,)).fetchone()["acquired"]:
+                raise Conflict("This tool is already being recovered; retry its original delivery later.")
+            return await self._resolve(role, case_id, version, call_id, name, args, tools)
+
+    async def _resolve(self, role, case_id, version, call_id, name, args, tools):
         key = "zoo-tool-" + call_id
         with transaction() as c:
             self.bound_case(c,case_id,version,tools.room_id)
@@ -478,10 +555,6 @@ class LiveBridge:
         else:
             try:
                 if name == "band_send_message":
-                    with transaction() as c:
-                        case = self.bound_case(c, case_id, version, tools.room_id)
-                        if case["data"].get("handoffs", 0) >= 8:
-                            raise Conflict("Eight handoffs reached; merchant review required.")
                     allowed=set(self.band_ids.values())
                     for participant in tools.participants:
                         if participant.get('id') in self.band_ids.values():
@@ -522,9 +595,13 @@ class LiveBridge:
                         {"version": version, "case_id": case_id, "request_key": key, "message": args["content"]}
                     )
                     sent = await tools.execute_tool_call(name, addressed)
-                    result = {"ok": True, "receipt": json.loads(json.dumps(sent, default=str))}
+                    receipt = sent.model_dump() if hasattr(sent, "model_dump") else sent
+                    receipt = json.loads(json.dumps(receipt, default=str))
+                    if not isinstance(receipt, dict) or not receipt.get("success") or not receipt.get("id"):
+                        raise Conflict("Outgoing message acknowledgement uncertain; no automatic resend.")
+                    result = {"ok": True, "receipt": receipt}
                     save_call(
-                        key, "band", "sent", {"case_id": case_id, "mentions": args["mentions"], "receipt": result["receipt"]}
+                        key, "band", "sent", {"case_id": case_id, "version": version, "room_id": tools.room_id, "mentions": args["mentions"], "has_message_marker": True, "receipt": result["receipt"]}
                     )
                     with transaction() as c:
                         case = self.bound_case(c, case_id, version, tools.room_id)
@@ -640,7 +717,7 @@ class LiveBridge:
                 with transaction() as c:
                     pending_send = c.execute("SELECT 1 FROM provider_calls WHERE request_key=%s AND provider='band' AND status='pending'", (key,)).fetchone()
                 if pending_send:
-                    raise
+                    raise Conflict("Outgoing message acknowledgement uncertain; recovery requires a saved receipt or the exact message in complete Band history. No automatic resend.") from exc
                 save_call(
                     key,
                     "provider",

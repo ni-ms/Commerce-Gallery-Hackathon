@@ -130,15 +130,7 @@ function App() {
           <div className="brand">
             <Leaf /> Smarter Returns
           </div>
-          <span className="eyebrow">A BETTER NEXT DESTINATION</span>
-          <h1>
-            Give every return
-            <br />a smarter route.
-          </h1>
-          <p>
-            Review the evidence. Reserve the next buyer. Approve with
-            confidence.
-          </p>
+          <h1>Sign in</h1>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -167,10 +159,6 @@ function App() {
               {error}
             </div>
           )}
-          <small>
-            Fictional merchant · Synthetic customers and costs · Simulated
-            shipments
-          </small>
         </div>
         <div className="login-art">
           <Leaf size={100} />
@@ -179,7 +167,6 @@ function App() {
             <br />
             More possibility.
           </h2>
-          <p>One thoughtful decision at a time.</p>
         </div>
       </div>
     );
@@ -194,7 +181,7 @@ function App() {
         <div className="workspace">
           <span className="avatar">GH</span>
           <div>
-            Gallery Home<small>Fictional demo merchant</small>
+            Gallery Home
           </div>
         </div>
         <nav>
@@ -204,13 +191,6 @@ function App() {
 
         </nav>
         <div className="aside-bottom">
-          <div className="demo-dot" />{" "}
-          {catalog?.mode === "live" ? "Live provider mode" : "Demo execution"}
-          <small>
-            {catalog?.mode === "live"
-              ? "See evidence for verified activity."
-              : "Agent and policy lookup simulations."}
-          </small>
           <button
             onClick={() =>
               void act(async () => {
@@ -226,18 +206,13 @@ function App() {
       <main>
         <header>
           <div>
-            <span className="eyebrow">OPERATIONS / RETURNS</span>
             <h1>Return workspace</h1>
-            <p>The best next destination, with the evidence to back it up.</p>
           </div>
           <button className="primary" onClick={() => setModal("new")}>
             <Plus size={17} /> New return
           </button>
         </header>
-        <div className="notice">
-          <Leaf size={16} /> Synthetic demo data. Shipping estimates and
-          shipment creation are simulated.
-        </div>
+        <p className="demo-notice">Shipping uses fixed synthetic estimates. No carrier is connected; approvals save simulated shipment records and do not purchase labels.</p>
         {error && (
           <div role="alert" className="error">
             {error}
@@ -265,11 +240,11 @@ function App() {
             <span>Approved routes</span>
             <strong>
               {total}
-              <small>simulated shipments</small>
+              <small>routes</small>
             </strong>
           </div>
           {catalog?.mode === "demo" && <div className="scenario">
-            <label htmlFor="scenario">Fresh demo scenario</label>
+            <label htmlFor="scenario">Scenario</label>
             <div>
               <select
                 id="scenario"
@@ -292,7 +267,7 @@ function App() {
                 ))}
               </select>
               <button
-                title="Reset synthetic data and start scenario"
+                title="Reset cases and start scenario"
                 disabled={busy}
                 onClick={() =>
                   void act(async () => {
@@ -306,8 +281,8 @@ function App() {
                 <RotateCcw size={17} />
               </button>
             </div>
-            <small>Resets fictional cases and approvals</small>
-            {scenario === 'policy-change' && <button className="text-button" disabled={busy} onClick={()=>void act(()=>api('/demo/policy',{direct_forwarding_enabled:false}))}>Disable demo forwarding</button>}
+            <small>Resets cases and approvals</small>
+            {scenario === 'policy-change' && <button className="text-button" disabled={busy} onClick={()=>void act(()=>api('/demo/policy',{direct_forwarding_enabled:false}))}>Disable forwarding</button>}
           </div>}
         </section></details>
         <div className="workspace-grid">
@@ -450,8 +425,8 @@ function App() {
                   <div className="error">
                     <h3>Review interrupted</h3>
                     <p>{events.slice().reverse().find(e => ["worker_error", "agent_error", "review_required"].includes(e.type))?.payload.message || "The review stopped before a current recommendation was ready."}</p>
-                    <p>Recovery checks saved receipts before continuing. Merchant approval is still required before shipping.</p>
-                    <button className="primary" disabled={busy} onClick={() => void act(() => api("/returns/" + selected + "/recover", {expected_version: c.version}))}>Recover review safely <ArrowRight size={15} /></button>
+                    <p>Your approval is required before shipping.</p>
+                    <button className="primary" disabled={busy} onClick={() => void act(() => api("/returns/" + selected + "/recover", {expected_version: c.version}))}>Resume review <ArrowRight size={15} /></button>
                   </div>
                 )}
                 {c.status === "rejected" && <div className="empty"><p>This recommendation was rejected. Check the item condition to start a fresh review.</p><button className="primary" onClick={() => {setNote(""); setPhotos([]); setConditionConfirmed(false); setCondition(c.data.inspection_condition || c.data.reported_condition); setModal("inspection");}}>Check item condition</button></div>}
@@ -502,7 +477,7 @@ function App() {
                     </div>
                     <p className="comparison">
                       Compared with {money(p.data.warehouse_cost_cents)} for the
-                      warehouse. Fixed synthetic estimates.
+                      warehouse. Fixed synthetic estimates; no carrier quote or label is available.
                     </p>
                     {active && (
                       <div className="reservation">
@@ -550,7 +525,7 @@ function App() {
                     <div>
                       <h3>Route approved</h3>
                       <p>
-                        {s.id} · One simulated shipment to {s.data.route.name}
+                        {s.id} · Simulated shipment to {s.data.route.name}
                       </p>
                       <strong>
                         {money(s.data.estimated_saving_cents)} approved
@@ -661,7 +636,7 @@ function App() {
                       <li key={e.id}>
                         <div className="timeline-dot" />
                         <div>
-                          <strong>{e.payload.message || label(e.type)}</strong>
+                          <strong>{e.payload.message === "Merchant approved one simulated shipment." ? "Route approved." : e.payload.message || label(e.type)}</strong>
                           <small>
                             Version {e.version} · {e.actor} ·{" "}
                             {new Date(e.created_at).toLocaleTimeString()}
@@ -670,14 +645,14 @@ function App() {
                       </li>
                     ))}
                 </ol></details>
-                <details className="secondary"><summary>Sponsor execution evidence</summary><button onClick={() => void act(async () => {setEvidence(await api("/integrations")); setModal("evidence");}, false)}>View live provider evidence</button></details>
+                <details className="secondary"><summary>Integration activity</summary><button onClick={() => void act(async () => {setEvidence(await api("/integrations")); setModal("evidence");}, false)}>View activity</button></details>
               </>
             )}
           </section>
         </div>
         <footer>
-          Smarter Returns · Reviewable decisions, merchant-controlled approval.
-          <span>{catalog?.merchant.policy_version} · USD</span>
+          Smarter Returns
+          <span>USD</span>
         </footer>
       </main>
       {modal && (
@@ -695,7 +670,7 @@ function App() {
                 <span className="eyebrow">CURRENT FACTS</span>
                 <h2>Check item condition</h2>
                 <p>
-                  Confirm what you can see. Photos are optional. A condition change starts a fresh review; shipping still needs your approval.
+                  A condition change starts a new review.
                 </p>
                 <form
                   onSubmit={(e) => {
@@ -730,7 +705,7 @@ function App() {
                   </label>
                   <label>Photos (optional, up to 3)<input type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={e => {setPhotos([]); void readPhotos(e.target.files).then(setPhotos).catch(e => setError(e.message));}} /></label>
                   <div>{photos.map((src, i) => <img className="inspection-photo" src={src} alt={`Selected photo ${i + 1}`} key={i} />)}</div>
-                  <label className="confirmation"><input type="checkbox" checked={conditionConfirmed} onChange={e => setConditionConfirmed(e.target.checked)} /> I confirm this condition reflects my check, including Unsure when I cannot tell.</label>
+                  <label className="confirmation"><input type="checkbox" checked={conditionConfirmed} onChange={e => setConditionConfirmed(e.target.checked)} /> I confirm the condition selected above.</label>
                   <button className="primary" disabled={busy || !conditionConfirmed}>
                     Confirm condition & review
                   </button>
@@ -855,11 +830,7 @@ function App() {
             )}
             {modal === "evidence" && (
               <>
-                <h2>Execution evidence</h2>
-                <p>
-                  Mode: <strong>{evidence?.mode}</strong>. Demo records do not
-                  establish live sponsor use.
-                </p>
+                <h2>Integration activity</h2>
                 <h3>Worker status</h3>
                 <pre>{JSON.stringify(evidence?.worker?.data, null, 2)}</pre>
                 <h3>Provider calls</h3>
@@ -873,7 +844,7 @@ function App() {
                     </details>
                   ))
                 ) : (
-                  <p>No live provider calls recorded.</p>
+                  <p>No provider calls recorded.</p>
                 )}
                 <h3>Saved sessions</h3>
                 <pre>{JSON.stringify(evidence?.sessions, null, 2)}</pre>

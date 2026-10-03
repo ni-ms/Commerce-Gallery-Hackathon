@@ -302,6 +302,10 @@ def inspect(case_id: str, body: Inspection):
 def research(case_id: str, body: Version):
     with transaction() as c:
         case = case_locked(c, case_id, body.expected_version)
+        if (case["data"].get("inspection_condition") or case["data"]["reported_condition"]) != "damaged":
+            raise Conflict("Repair research applies only to damaged items. No request was queued.")
+        if case["status"] in ("approved", "exception", "rejected"):
+            raise Conflict("This case requires merchant review before further research.")
         enqueue(c, case, "research")
         return {"ok": True}
 

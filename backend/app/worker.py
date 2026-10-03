@@ -128,7 +128,7 @@ async def run():
                     )
                     if terminal:
                         c.execute(
-                            "UPDATE return_cases SET status='needs_review' WHERE id=%s AND status NOT IN ('approved','exception','rejected')",
+                            "UPDATE return_cases SET status='needs_review' WHERE id=%s AND status NOT IN ('approved','exception','rejected','awaiting_approval')",
                             (case["id"],),
                         )
                         event(

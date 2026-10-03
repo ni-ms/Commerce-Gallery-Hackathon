@@ -1,0 +1,88 @@
+[
+  {
+    "duration": 18,
+    "title": "Smarter Returns",
+    "subtitle": "A better next destination for every eligible return",
+    "kind": "cover",
+    "caption": "Agent review. Evidence for the decision. Merchant approval.",
+    "narration": "Smarter Returns helps a merchant choose a returned item's next eligible destination. A sealed lamp may be able to go directly to a waiting buyer. An opened item may need inspection. Our prototype brings that decision into one merchant workspace, with policy evidence and a person controlling approval."
+  },
+  {
+    "duration": 19,
+    "title": "The routing decision",
+    "subtitle": "Condition and policy determine which routes qualify",
+    "kind": "text",
+    "lines": [
+      "A waiting buyer can reduce unnecessary warehouse routing",
+      "Opened or uncertain items need a safer fallback",
+      "Every recommendation compares eligible route costs"
+    ],
+    "narration": "The problem starts with a simple question: where should this return go next? Sending everything back to a warehouse can miss a cheaper eligible route. But the lowest quote alone is not enough. The system needs to check the item's condition, the merchant's policy, destination acceptance, and whether a buyer is still available."
+  },
+  {
+    "duration": 23,
+    "title": "An eligible buyer route",
+    "subtitle": "Recorded fixture example: RET-001",
+    "kind": "cost",
+    "lines": [
+      "$6 estimated buyer route",
+      "$15 estimated warehouse route",
+      "$9 potential estimated savings"
+    ],
+    "caption": "Synthetic quotes. Estimated savings. Simulated shipping.",
+    "narration": "In the recorded fixture example, a sealed reading lamp matches a waiting buyer. The buyer route costs six dollars, compared with fifteen dollars for the warehouse. That creates nine dollars in potential estimated savings. The merchant still has to confirm the sealed condition and approve the route. These are synthetic quotes, and shipment creation is simulated. This example shows the decision logic, not measured merchant savings."
+  },
+  {
+    "duration": 23,
+    "title": "Inspection changes the plan",
+    "subtitle": "A broken seal invalidates the earlier buyer proposal",
+    "kind": "inspection",
+    "image": "inspection-reroute.jpg",
+    "caption": "Recorded demo scenario",
+    "narration": "The second example is the more important one. A desk lamp initially qualifies for an eight dollar buyer route. The merchant then records an opened condition and a broken seal. The system immediately invalidates the old plan and releases the buyer reservation. A new eleven dollar inspection route requires a fresh approval. A cheaper quote cannot override the condition rules, and an outdated recommendation cannot quietly remain executable."
+  },
+  {
+    "duration": 22,
+    "title": "Merchant approval",
+    "subtitle": "The person checking the item controls the decision",
+    "kind": "screen",
+    "image": "condition-check.jpg",
+    "caption": "Current interface: condition confirmation and optional photos",
+    "narration": "The interface keeps the decision understandable. The merchant can check the item condition, add a note, and attach optional photos. A changed condition starts another review. Approval rechecks current facts, policy, and any required reservation in a database transaction. Repeating an approval returns the same simulated shipment. The agents have no approval tool, so the merchant remains in control."
+  },
+  {
+    "duration": 27,
+    "title": "A verified live review",
+    "subtitle": "ZooWork sessions, Band handoffs, and Moss policy retrieval",
+    "kind": "screen",
+    "image": "live-review.jpg",
+    "caption": "Live review complete. Warehouse recommendation: $15. Awaiting approval.",
+    "narration": "We also completed a real provider review. Three ZooWork role sessions handled returns, policy, and fulfillment. Band carried their addressed handoffs, and two Moss queries retrieved policy evidence. In this case, the eligible recommendation was the sample merchant warehouse at fifteen dollars. The case remains awaiting approval, with no shipment. That is a useful result: the system can recommend the warehouse when the alternatives do not qualify, even when forwarding would make a more dramatic demo."
+  },
+  {
+    "duration": 28,
+    "title": "What works today",
+    "subtitle": "30 regression tests passed in the current project",
+    "kind": "text",
+    "lines": [
+      "Concurrent reservations and duplicate approval checks",
+      "Stale plans, inspection changes, and receipt recovery",
+      "Healthy local app with persistent PostgreSQL data"
+    ],
+    "caption": "Tavily research remains outside this verified live review",
+    "narration": "The current project passes thirty regression tests using an isolated PostgreSQL database. The checks cover reservation contention, stale approvals, inspection changes, receipt recovery, and duplicate shipping prevention. The local API, worker, and database report healthy status. Saved decisions survive restarts. Repair research through Tavily exists in the implementation, but this live review did not verify it. We keep recorded provider evidence separate from the deterministic demo scenarios."
+  },
+  {
+    "duration": 20,
+    "title": "The next step",
+    "subtitle": "A real merchant pilot with actual shipping integrations",
+    "kind": "text",
+    "lines": [
+      "Validate real policy, destination acceptance, and carrier quotes",
+      "Connect orders and shipping before measuring savings",
+      "Keep merchant approval and evidence visible"
+    ],
+    "caption": "Today: a controlled prototype demo with live agent-review evidence",
+    "narration": "The next step is a real merchant pilot: validate the merchant's policy and destination acceptance, connect orders and carrier quotes, and measure actual outcomes. Today's prototype is ready for a controlled demo and a clear presentation. Its strongest story is a reviewable routing decision that changes safely when the facts change, while a merchant keeps control of approval."
+  }
+]

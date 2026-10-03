@@ -1,0 +1,15 @@
+{
+  "name": "smarter-returns-demo-video",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio index.jsx",
+    "render": "remotion render walkthrough.jsx SmarterReturnsWalkthrough ../output/smarter-returns-demo-neural.mp4 --codec=h264 --crf=19 --concurrency=4",
+    "walkthrough": "remotion studio walkthrough.jsx"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.532",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.532"
+  }
+}

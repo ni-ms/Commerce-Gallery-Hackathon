@@ -1,0 +1,1 @@
+Smarter Returns helps a merchant choose a returned item's next eligible destination. A sealed lamp may be able to go directly to a waiting buyer. An opened item may need inspection. Our prototype brings that decision into one merchant workspace, with policy evidence and a person controlling approval.

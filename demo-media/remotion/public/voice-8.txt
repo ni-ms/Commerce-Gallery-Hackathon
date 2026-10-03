@@ -1,0 +1,1 @@
+The next step is a real merchant pilot: validate the merchant's policy and destination acceptance, connect orders and carrier quotes, and measure actual outcomes. Today's prototype is ready for a controlled demo and a clear presentation. Its strongest story is a reviewable routing decision that changes safely when the facts change, while a merchant keeps control of approval.

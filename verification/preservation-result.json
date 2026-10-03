@@ -1,0 +1,142 @@
+{
+  "existing_rows_preserved": {
+    "agent_sessions": true,
+    "buyer_orders": true,
+    "destinations": true,
+    "locations": true,
+    "merchants": true,
+    "policy_passages": true,
+    "products": true,
+    "provider_calls": true,
+    "quotes": true,
+    "reservations": true,
+    "return_cases": true,
+    "route_proposals": true,
+    "shipments": true,
+    "tool_results": true
+  },
+  "existing_counts": {
+    "agent_sessions": 3,
+    "buyer_orders": 4,
+    "destinations": 2,
+    "locations": 4,
+    "merchants": 1,
+    "policy_passages": 8,
+    "products": 5,
+    "provider_calls": 26,
+    "quotes": 6,
+    "reservations": 2,
+    "return_cases": 12,
+    "route_proposals": 5,
+    "shipments": 2,
+    "tool_results": 26
+  },
+  "credential_files_unchanged": true,
+  "protected_case": {
+    "created_at": "2026-10-03 22:29:25.345222+00:00",
+    "data": {
+      "band_room_id": "52501aa3-4481-4ad6-ad8a-415ce211b080",
+      "customer_alias": "Demo returner",
+      "elapsed_since_purchase_days": 10,
+      "finding": {
+        "case_version": 1,
+        "condition": "sealed",
+        "direct_forwarding": true,
+        "origin": "live Moss retrieval",
+        "passages": [
+          {
+            "id": "POL-001",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "Accept returns within 30 days for this fictional merchant. All seeded cases are 10 days after purchase.",
+            "title": "Return eligibility"
+          },
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "handoffs": 8,
+      "inspection_condition": null,
+      "merchant_id": "merchant-demo-01",
+      "origin_zone_id": "zone-oakland",
+      "policy_case_version": 1,
+      "policy_passage_ids": [
+        "POL-004",
+        "POL-005",
+        "POL-006",
+        "POL-001",
+        "POL-007",
+        "POL-002",
+        "POL-003",
+        "POL-008"
+      ],
+      "policy_retrieval_provider": "moss",
+      "reason": "Not needed",
+      "reported_condition": "sealed",
+      "retrieval_policy_version": "demo-policy-v1",
+      "sku": "LAMP-01"
+    },
+    "id": "RET-115451f05dd0",
+    "status": "awaiting_approval",
+    "version": 1
+  },
+  "new_case": {
+    "created_at": "2026-10-03 23:22:23.578781+00:00",
+    "data": {
+      "band_room_id": "b747e2ce-4865-4143-8e49-3d221e791097",
+      "condition_confirmed": true,
+      "customer_alias": "Demo returner",
+      "elapsed_since_purchase_days": 10,
+      "finding": {
+        "case_version": 2,
+        "condition": "sealed",
+        "direct_forwarding": true,
+        "origin": "live Moss retrieval",
+        "passages": [
+          {
+            "id": "POL-002",
+            "merchant_id": "merchant-demo-01",
+            "policy_version": "demo-policy-v1",
+            "source_file": "policies/return-policy.md",
+            "text": "A sealed returned item may go to a waiting buyer only when the SKU matches, the arrival meets the buyer deadline, and the merchant approves the current plan.",
+            "title": "Direct forwarding"
+          }
+        ],
+        "policy_version": "demo-policy-v1"
+      },
+      "handoffs": 3,
+      "inspection_actor": "merchant",
+      "inspection_condition": "sealed",
+      "inspection_note": "LIVE VERIFICATION ONLY: sealed synthetic item. Checkerboard tests optional image persistence; it is not a real item photo. No shipping approval.",
+      "inspection_photos": [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABgCAIAAABaGO0eAAAAQXRFWHREZXNjcmlwdGlvbgBTeW50aGV0aWMgdmVyaWZpY2F0aW9uIGltYWdlLiBOb3QgYW4gaXRlbSBwaG90b2dyYXBoLpxkS8kAAAEhSURBVHic7dmxDQMxDATBL8cVO3Z1rsMdGPho9bgRGC8oTMjre/O93p9bo/9/rqd/4Ol9AAC2+wAAbPcBANjuAwCw3QcAYLsPAMB2HwCA7f512kJrfQBxH0DcBxD3AcR9AHEfQNwHEPcBxH0AcR9A3AcQ9wHEfQBxH0DcBxD3HWTiPgAA230AALb7AABs9wEA2O4DALDdBwBguw8AwHYfQA1w2kJrfQBxH0DcBxD3AcR9AHEfQNwHEPcBxH0AcR9A3AcQ9wHEfQBxH0DcBxD3HWTiPgAA230AALb7AABs9wEA2O4DALDdBwBguw8AwHYfQA1w2kJrfQBxH0DcBxD3AcR9AHEfQNwHEPcBxH0AcR9A3AcQ9wHEfQBxH0DcBxD3f84XhbAYqIUXAAAAAElFTkSuQmCC"
+      ],
+      "merchant_id": "merchant-demo-01",
+      "origin_zone_id": "zone-oakland",
+      "policy_case_version": 2,
+      "policy_passage_ids": [
+        "POL-005",
+        "POL-003",
+        "POL-008",
+        "POL-002",
+        "POL-004"
+      ],
+      "policy_retrieval_provider": "moss",
+      "reason": "LIVE VERIFICATION 2026-10-03 \u2014 ZooWork/Band/Moss recovery; synthetic item and optional test image; do not ship.",
+      "reported_condition": "sealed",
+      "retrieval_policy_version": "demo-policy-v1",
+      "sku": "LAMP-01"
+    },
+    "id": "RET-f0c0a6dc2a7f",
+    "status": "awaiting_approval",
+    "version": 2
+  }
+}
