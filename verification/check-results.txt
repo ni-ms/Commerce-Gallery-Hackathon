@@ -1,0 +1,5 @@
+Final backend regression: 35 passed, 1 dependency deprecation warning (3.05s).
+Final frontend: tsc --noEmit and Vite production build passed.
+All preexisting rows in preservation snapshot retained exactly; .env and .env.providers hashes unchanged.
+API, worker and PostgreSQL healthy; rebuilt web running.
+No shipping approval or label purchase submitted.
